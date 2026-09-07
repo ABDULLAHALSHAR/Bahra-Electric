@@ -3,2000 +3,384 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>منصة بحرة إلكتريك للتدريب والتطوير</title>
-
+<title>منصة بحرة إلكتريك لتطوير الموظفين</title>
 <style>
 :root{
-  --red:#e31b23;
-  --red-dark:#b31319;
-  --dark:#111317;
-  --text:#1c2025;
-  --muted:#7b818a;
-  --bg:#f3f4f6;
-  --white:#fff;
-  --line:#e7e9ed;
-  --green:#1aae6f;
-  --shadow:0 8px 30px rgba(0,0,0,.08);
-}
-
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-html,body{
-  width:100%;
-  min-height:100%;
-}
-
-body{
-  font-family:"Segoe UI",Tahoma,Arial,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-}
-
-button,input{
-  font-family:inherit;
-}
-
-button{
-  cursor:pointer;
-}
-
-.hidden{
-  display:none!important;
-}
-
-/* =========================
-   LOGIN
-========================= */
-
-#loginPage{
-  min-height:100vh;
-  position:relative;
-  display:flex;
-  align-items:center;
-  justify-content:flex-end;
-  padding:50px 8%;
-  overflow:hidden;
-  background:#17232c;
-}
-
-.login-bg{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-.login-overlay{
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(
-      90deg,
-      rgba(4,10,15,.15),
-      rgba(5,12,18,.45) 48%,
-      rgba(7,14,20,.74)
-    );
-}
-
-.login-brand{
-  position:absolute;
-  right:8%;
-  top:70px;
-  color:white;
-  z-index:2;
-}
-
-.login-brand h1{
-  font-size:42px;
-  line-height:1.15;
-  font-weight:900;
-}
-
-.login-brand h1 span{
-  color:var(--red);
-}
-
-.login-brand p{
-  margin-top:13px;
-  font-size:15px;
-  opacity:.9;
-}
-
-.login-panel{
-  position:relative;
-  z-index:5;
-  width:430px;
-  min-height:570px;
-  background:white;
-  border-radius:22px;
-  padding:42px;
-  box-shadow:0 30px 80px rgba(0,0,0,.32);
-}
-
-.login-logo{
-  display:flex;
-  justify-content:center;
-  margin-bottom:25px;
-}
-
-.login-logo img{
-  max-width:170px;
-  max-height:70px;
-  object-fit:contain;
-}
-
-.login-panel h2{
-  font-size:29px;
-  font-weight:900;
-  margin-bottom:5px;
-}
-
-.login-panel .subtitle{
-  color:var(--muted);
-  font-size:14px;
-  margin-bottom:30px;
-}
-
-.field{
-  margin-bottom:19px;
-}
-
-.field label{
-  display:block;
-  font-size:14px;
-  font-weight:700;
-  margin-bottom:8px;
-}
-
-.field input{
-  width:100%;
-  height:52px;
-  border:1px solid #dfe2e6;
-  background:#f8f9fa;
-  border-radius:11px;
-  padding:0 16px;
-  outline:none;
-  font-size:15px;
-}
-
-.field input:focus{
-  border-color:var(--red);
-  box-shadow:0 0 0 3px rgba(227,27,35,.09);
-}
-
-.login-btn{
-  width:100%;
-  height:54px;
-  border:none;
-  border-radius:11px;
-  color:white;
-  font-size:16px;
-  font-weight:800;
-  background:linear-gradient(135deg,var(--red),var(--red-dark));
-  margin-top:8px;
-  box-shadow:0 10px 24px rgba(227,27,35,.25);
-}
-
-.login-btn:disabled{
-  opacity:.6;
-  cursor:not-allowed;
-}
-
-.login-error{
-  text-align:center;
-  min-height:22px;
-  color:var(--red);
-  font-size:13px;
-  margin-top:13px;
-  font-weight:600;
-}
-
-.demo{
-  margin-top:24px;
-  padding:14px;
-  background:#f7f7f8;
-  border:1px dashed #d8dade;
-  border-radius:11px;
-}
-
-.demo-title{
-  font-size:12px;
-  color:var(--muted);
-  margin-bottom:9px;
-}
-
-.demo-buttons{
-  display:flex;
-  gap:6px;
-  flex-wrap:wrap;
-}
-
-.demo-buttons button{
-  border:1px solid #e2e3e6;
-  border-radius:18px;
-  background:white;
-  padding:6px 11px;
-  font-size:11px;
-  color:var(--red);
-  font-weight:700;
-}
-
-/* =========================
-   APP
-========================= */
-
-#app{
-  min-height:100vh;
-  display:grid;
-  grid-template-columns:1fr 225px;
-  grid-template-rows:72px 1fr;
-}
-
-.sidebar{
-  grid-column:2;
-  grid-row:1/3;
-  position:fixed;
-  right:0;
-  top:0;
-  width:225px;
-  height:100vh;
-  background:#111317;
-  color:#fff;
-  padding:22px 14px;
-  z-index:50;
-  overflow:auto;
-}
-
-.side-logo{
-  padding:6px 10px 22px;
-  border-bottom:1px solid rgba(255,255,255,.08);
-  margin-bottom:18px;
-}
-
-.side-logo img{
-  display:block;
-  max-width:155px;
-  max-height:60px;
-  object-fit:contain;
-  margin:auto;
-}
-
-.nav-item{
-  width:100%;
-  border:0;
-  color:#c7cbd1;
-  background:none;
-  border-radius:10px;
-  text-align:right;
-  padding:13px 14px;
-  margin-bottom:5px;
-  font-size:14px;
-  font-weight:600;
-}
-
-.nav-item:hover{
-  background:#1e2025;
-  color:white;
-}
-
-.nav-item.active{
-  color:#fff;
-  background:linear-gradient(135deg,var(--red),var(--red-dark));
-}
-
-.logout{
-  margin-top:25px;
-  border-top:1px solid rgba(255,255,255,.08);
-  padding-top:15px;
-}
-
-.topbar{
-  grid-column:1;
-  grid-row:1;
-  height:72px;
-  position:fixed;
-  right:225px;
-  left:0;
-  top:0;
-  background:white;
-  z-index:40;
-  border-bottom:1px solid var(--line);
-  display:flex;
-  align-items:center;
-  gap:15px;
-  padding:0 26px;
-}
-
-.search{
-  flex:1;
-}
-
-.search input{
-  width:100%;
-  max-width:570px;
-  height:44px;
-  background:#f5f6f7;
-  border:1px solid #e5e6e9;
-  border-radius:11px;
-  padding:0 16px;
-  outline:none;
-}
-
-.profile{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  margin-right:auto;
-}
-
-.profile img{
-  width:42px;
-  height:42px;
-  border-radius:50%;
-  object-fit:cover;
-}
-
-.profile-name{
-  font-size:13px;
-  font-weight:800;
-}
-
-.profile-role{
-  color:var(--muted);
-  font-size:11px;
-}
-
-.main{
-  grid-column:1;
-  grid-row:2;
-  margin-right:0;
-  padding:96px 28px 40px;
-  min-height:100vh;
-}
-
-.hero{
-  height:290px;
-  position:relative;
-  overflow:hidden;
-  border-radius:18px;
-  color:white;
-  margin-bottom:22px;
-  background:#222;
-}
-
-.hero img{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-.hero::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(
-    90deg,
-    rgba(10,12,15,.18),
-    rgba(10,12,15,.62) 55%,
-    rgba(10,12,15,.94)
-  );
-}
-
-.hero-content{
-  position:relative;
-  z-index:3;
-  width:55%;
-  padding:48px 40px;
-}
-
-.hero-content h1{
-  font-size:34px;
-  line-height:1.25;
-  font-weight:900;
-}
-
-.hero-content h1 span{
-  color:var(--red);
-}
-
-.hero-content p{
-  margin-top:13px;
-  line-height:1.8;
-  font-size:14px;
-  color:#e7e7e7;
-}
-
-.hero-content button{
-  margin-top:21px;
-  border:0;
-  padding:12px 24px;
-  border-radius:10px;
-  background:var(--red);
-  color:white;
-  font-size:14px;
-  font-weight:800;
-}
-
-/* KPI */
-
-.kpis{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:15px;
-  margin-bottom:22px;
-}
-
-.kpi{
-  background:white;
-  border-radius:14px;
-  padding:20px;
-  box-shadow:var(--shadow);
-}
-
-.kpi-icon{
-  width:44px;
-  height:44px;
-  border-radius:12px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#fdebed;
-  color:var(--red);
-  font-size:20px;
-  margin-bottom:12px;
-}
-
-.kpi-number{
-  font-size:29px;
-  font-weight:900;
-}
-
-.kpi-label{
-  color:var(--muted);
-  font-size:13px;
-  margin-top:4px;
-}
-
-/* DASH GRID */
-
-.dashboard-grid{
-  display:grid;
-  grid-template-columns:1.25fr .8fr 1fr;
-  gap:16px;
-  margin-bottom:22px;
-}
-
-.card{
-  background:white;
-  border-radius:14px;
-  box-shadow:var(--shadow);
-  padding:20px;
-}
-
-.card-title{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  margin-bottom:18px;
-}
-
-.card-title h3{
-  font-size:16px;
-}
-
-.card-title span{
-  color:var(--red);
-  font-size:12px;
-  font-weight:700;
-}
-
-.course{
-  display:flex;
-  align-items:center;
-  gap:13px;
-  margin-bottom:14px;
-}
-
-.course:last-child{
-  margin-bottom:0;
-}
-
-.course img{
-  width:95px;
-  height:65px;
-  border-radius:10px;
-  object-fit:cover;
-}
-
-.course b{
-  display:block;
-  font-size:13px;
-  margin-bottom:5px;
-}
-
-.course small{
-  color:var(--muted);
-}
-
-.donut{
-  width:145px;
-  height:145px;
-  margin:20px auto 13px;
-  border-radius:50%;
-  background:conic-gradient(var(--green) 0 70%,#eceef1 70% 100%);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  position:relative;
-}
-
-.donut::after{
-  content:"";
-  position:absolute;
-  width:110px;
-  height:110px;
-  border-radius:50%;
-  background:#fff;
-}
-
-.donut span{
-  position:relative;
-  z-index:2;
-  font-weight:900;
-  font-size:27px;
-}
-
-.center{
-  text-align:center;
-}
-
-.center p{
-  color:var(--muted);
-  font-size:13px;
-}
-
-.session{
-  display:flex;
-  gap:12px;
-  align-items:center;
-  margin-bottom:13px;
-}
-
-.session-date{
-  min-width:52px;
-  height:52px;
-  border-radius:10px;
-  background:#fdebed;
-  color:var(--red);
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  font-size:11px;
-}
-
-.session-date strong{
-  font-size:18px;
-}
-
-.session b{
-  font-size:13px;
-}
-
-.session small{
-  color:var(--muted);
-}
-
-/* PATHS */
-
-.section-title{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin:25px 0 13px;
-}
-
-.section-title h2{
-  font-size:19px;
-}
-
-.paths{
-  display:grid;
-  grid-template-columns:repeat(6,1fr);
-  gap:13px;
-}
-
-.path{
-  height:155px;
-  border-radius:14px;
-  position:relative;
-  overflow:hidden;
-  color:white;
-}
-
-.path img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-.path::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(transparent,rgba(0,0,0,.82));
-}
-
-.path b{
-  position:absolute;
-  z-index:3;
-  bottom:14px;
-  right:13px;
-  left:13px;
-  font-size:12px;
-}
-
-/* GENERIC PAGES */
-
-.page-title{
-  margin-bottom:20px;
-}
-
-.page-title h1{
-  font-size:26px;
-}
-
-.page-title p{
-  color:var(--muted);
-  font-size:13px;
-}
-
-.table-card{
-  background:white;
-  border-radius:14px;
-  box-shadow:var(--shadow);
-  overflow:hidden;
-}
-
-table{
-  width:100%;
-  border-collapse:collapse;
-}
-
-th,td{
-  text-align:right;
-  padding:14px;
-  border-bottom:1px solid var(--line);
-  font-size:13px;
-}
-
-th{
-  background:#f7f8f9;
-  color:var(--muted);
-}
-
-.badge{
-  display:inline-block;
-  border-radius:20px;
-  padding:4px 11px;
-  background:#e8f7ef;
-  color:#168453;
-  font-size:11px;
-  font-weight:700;
-}
-
-@media(max-width:1100px){
-  .kpis{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .dashboard-grid{
-    grid-template-columns:1fr;
-  }
-
-  .paths{
-    grid-template-columns:repeat(3,1fr);
-  }
-}
-
-@media(max-width:760px){
-  #app{
-    display:block;
-  }
-
-  .sidebar{
-    display:none;
-  }
-
-  .topbar{
-    right:0;
-  }
-
-  .main{
-    padding:90px 14px 30px;
-  }
-
-  .login-panel{
-    width:100%;
-  }
-
-  .login-brand{
-    display:none;
-  }
-
-  #loginPage{
-    padding:20px;
-  }
-
-  .hero-content{
-    width:100%;
-    padding:35px 24px;
-  }
-
-  .kpis{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .paths{
-    grid-template-columns:1fr 1fr;
-  }
-}
+  --red:#e11b22;--red2:#b3141a;--ink:#111820;--muted:#7d8792;--bg:#f3f6f8;
+  --card:#fff;--line:#e7ebef;--nav:#08131c;--nav2:#0d1c27;--green:#0fa968;
+  --amber:#e6a015;--blue:#1681d8;--shadow:0 12px 34px rgba(24,38,51,.08);
+  --r:16px;--sans:"Segoe UI",Tahoma,Arial,sans-serif;
+}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:var(--sans);background:var(--bg);color:var(--ink)}
+button,input,select,textarea{font:inherit}button{cursor:pointer}.hidden{display:none!important}
+::-webkit-scrollbar{width:9px;height:9px}::-webkit-scrollbar-thumb{background:#c7cdd4;border-radius:8px}
+a{text-decoration:none;color:inherit}
+
+/* LOGIN */
+.login{min-height:100vh;position:relative;display:flex;align-items:center;justify-content:center;padding:34px;overflow:hidden;background:#101a21}
+.login-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.94) contrast(1.02)}
+.login-shade{position:absolute;inset:0;background:linear-gradient(95deg,rgba(6,15,22,.15),rgba(6,15,22,.38) 50%,rgba(6,15,22,.78))}
+.login-shell{position:relative;z-index:2;width:min(1180px,96vw);min-height:650px;border:1px solid rgba(255,255,255,.26);border-radius:24px;overflow:hidden;display:grid;grid-template-columns:1.3fr .78fr;background:rgba(255,255,255,.08);box-shadow:0 35px 90px rgba(0,0,0,.38);backdrop-filter:blur(2px)}
+.login-visual{padding:48px;color:#fff;display:flex;flex-direction:column;justify-content:flex-end;position:relative}
+.login-visual:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(4,12,18,.58));z-index:-1}
+.brand-lock{position:absolute;top:38px;right:40px;background:rgba(255,255,255,.92);padding:12px 18px;border-radius:14px}
+.brand-lock img{height:58px;display:block}
+.login-copy{max-width:520px;margin-bottom:26px}.login-copy h1{font-size:44px;line-height:1.15;margin:0 0 12px;font-weight:900}.login-copy h1 span{color:#ff2a31}.login-copy p{font-size:17px;line-height:1.8;margin:0;color:#eef3f6}
+.login-feats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.login-feat{background:rgba(4,10,16,.56);border:1px solid rgba(255,255,255,.15);border-radius:15px;padding:18px 10px;text-align:center;font-weight:700;font-size:13px}.login-feat i{display:grid;place-items:center;width:42px;height:42px;background:var(--red);border-radius:11px;margin:0 auto 9px;font-style:normal;font-size:20px}
+.login-card{background:#fff;padding:38px 42px;display:flex;flex-direction:column;justify-content:center}.login-card .mini-logo{display:none;text-align:center;margin-bottom:10px}.login-card .mini-logo img{height:54px}.login-card h2{font-size:32px;margin:0 0 6px;font-weight:900}.login-card .sub{color:var(--muted);margin:0 0 26px}
+.field{margin-bottom:17px}.field label{display:block;font-weight:800;font-size:13px;margin-bottom:8px}.field input,.field select{width:100%;height:52px;border:1px solid var(--line);background:#f8fafb;border-radius:12px;padding:0 14px;outline:none}.field input:focus{border-color:var(--red);box-shadow:0 0 0 4px rgba(225,27,34,.08)}
+.primary{border:0;background:linear-gradient(135deg,var(--red),var(--red2));color:#fff;height:52px;border-radius:12px;font-weight:900;box-shadow:0 10px 25px rgba(225,27,34,.24)}
+.login-error{min-height:20px;color:var(--red);font-size:13px;font-weight:800;text-align:center;margin-top:10px}
+.demo{border:1px dashed #d9dee3;border-radius:12px;padding:12px;margin-top:18px;background:#fafbfc}.demo small{color:var(--muted)}.demo-row{display:flex;gap:7px;margin-top:9px;flex-wrap:wrap}.demo-row button{border:1px solid var(--line);background:#fff;border-radius:20px;padding:6px 11px;color:var(--red);font-size:12px;font-weight:800}
+
+/* APP */
+.app{min-height:100vh}.sidebar{position:fixed;right:0;top:0;bottom:0;width:226px;background:linear-gradient(180deg,var(--nav),var(--nav2));color:#dbe3e9;z-index:50;overflow:auto;padding:18px 12px}.side-logo{padding:8px 10px 20px;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:11px}.side-logo img{width:165px;max-height:64px;object-fit:contain;display:block;margin:auto}
+.nav-label{font-size:10px;color:#6d7a86;padding:13px 13px 7px;font-weight:900;letter-spacing:.5px}.nav-item{width:100%;border:0;background:transparent;color:#d9e0e6;text-align:right;padding:11px 13px;border-radius:11px;margin:2px 0;font-weight:700;display:flex;align-items:center;gap:11px}.nav-item span:first-child{width:23px;text-align:center;font-size:18px}.nav-item:hover{background:rgba(255,255,255,.07);color:#fff}.nav-item.active{background:linear-gradient(135deg,var(--red),var(--red2));color:#fff;box-shadow:0 8px 20px rgba(225,27,34,.24)}
+.side-footer{border-top:1px solid rgba(255,255,255,.08);margin-top:16px;padding:22px 12px 10px}.side-footer b{font-size:20px;color:#fff}.side-footer b em{font-style:normal;color:#ff3339}.side-footer small{display:block;line-height:1.7;color:#6f7c87;margin-top:12px;letter-spacing:1.6px}
+.topbar{position:fixed;top:0;right:226px;left:0;height:72px;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:13px;padding:0 25px;z-index:40;backdrop-filter:blur(10px)}
+.search{position:relative;flex:1;max-width:650px}.search input{width:100%;height:44px;border:1px solid var(--line);border-radius:12px;background:#f6f8fa;padding:0 42px 0 14px;outline:none}.search b{position:absolute;right:15px;top:11px;color:#7a858e}
+.top-spacer{flex:1}.top-btn{width:40px;height:40px;border:0;background:transparent;border-radius:10px;font-size:19px}.top-btn:hover{background:#f2f4f6}.profile{display:flex;align-items:center;gap:9px;border-right:1px solid var(--line);padding-right:12px}.profile img{width:42px;height:42px;border-radius:50%;object-fit:cover}.profile strong{display:block;font-size:13px}.profile small{color:var(--muted)}
+.main{margin-right:226px;padding:94px 22px 34px;min-height:100vh}.page-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:18px}.page-head h1{margin:0;font-size:26px}.page-head p{margin:4px 0 0;color:var(--muted);font-size:13px}
+.toolbar{display:flex;gap:9px;flex-wrap:wrap}.btn{border:1px solid var(--line);background:#fff;border-radius:10px;padding:10px 15px;font-weight:800}.btn.red{background:var(--red);color:#fff;border-color:var(--red)}.btn.soft{background:#fff1f2;color:var(--red);border-color:#ffd9dc}
+.hero{height:330px;border-radius:20px;overflow:hidden;position:relative;background:#101820;color:#fff;box-shadow:var(--shadow);margin-bottom:17px}.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(92deg,rgba(5,12,18,.08),rgba(5,12,18,.46) 46%,rgba(5,12,18,.92))}
+.hero-inner{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:center;width:48%;padding:36px 44px}.hero-inner h2{font-size:38px;line-height:1.2;margin:0}.hero-inner h2 span{color:#ff2b32}.hero-inner p{font-size:14px;line-height:1.8;color:#e5ebef;margin:13px 0 20px}.hero-inner .btn{align-self:flex-start}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px}.kpi{background:#fff;border:1px solid #edf0f2;border-radius:15px;padding:18px;display:flex;align-items:center;gap:14px;box-shadow:var(--shadow)}.kpi .ic{width:48px;height:48px;border-radius:12px;background:#fff0f1;color:var(--red);display:grid;place-items:center;font-size:22px}.kpi b{font-size:27px;display:block;line-height:1}.kpi small{color:var(--muted)}.kpi .trend{margin-right:auto;color:var(--green);font-size:12px;font-weight:900}
+.grid3{display:grid;grid-template-columns:1.15fr .8fr 1fr;gap:15px;margin-bottom:18px}.card{background:#fff;border:1px solid #edf0f2;border-radius:15px;box-shadow:var(--shadow);padding:19px}.card-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}.card-head h3{margin:0;font-size:16px}.card-head button{border:0;background:transparent;color:var(--red);font-weight:800;font-size:12px}
+.course-mini{display:flex;gap:11px;align-items:center;margin:11px 0}.course-mini img{width:92px;height:62px;border-radius:10px;object-fit:cover}.course-mini b{font-size:13px}.course-mini small{display:block;color:var(--muted);margin-top:5px}.level{display:inline-block;padding:3px 9px;border-radius:15px;background:#e9f8ef;color:#168554;font-size:10px;font-weight:900}
+.donut{width:150px;height:150px;border-radius:50%;margin:16px auto;display:grid;place-items:center;background:conic-gradient(var(--green) 0 70%,#edf0f2 70% 100%);position:relative}.donut:before{content:"";position:absolute;inset:17px;border-radius:50%;background:#fff}.donut strong{position:relative;z-index:2;font-size:30px}
+.session{display:flex;align-items:center;gap:11px;margin:11px 0}.datebox{width:54px;height:54px;border-radius:11px;background:#fff0f1;color:var(--red);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:10px}.datebox b{font-size:18px}.session strong{font-size:13px}.session small{display:block;color:var(--muted);margin-top:3px}
+.paths{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}.path{height:150px;border-radius:15px;overflow:hidden;position:relative;color:#fff;box-shadow:var(--shadow)}.path img{width:100%;height:100%;object-fit:cover}.path:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,12,18,.05),rgba(4,12,18,.88))}.path strong{position:absolute;z-index:2;bottom:14px;right:13px;left:13px;font-size:13px}
+
+/* catalog/cards */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}.filter{border:1px solid var(--line);background:#fff;color:#58636d;border-radius:20px;padding:7px 13px;font-size:12px;font-weight:800}.filter.active{background:var(--red);color:#fff;border-color:var(--red)}
+.course-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.course-card{background:#fff;border:1px solid #edf0f2;border-radius:15px;overflow:hidden;box-shadow:var(--shadow)}.course-card img{width:100%;height:155px;object-fit:cover}.course-body{padding:16px}.course-body h3{margin:0 0 8px;font-size:16px}.course-meta{display:flex;gap:10px;color:var(--muted);font-size:12px;margin-bottom:12px}.course-actions{display:flex;gap:8px}.course-actions .btn{flex:1;text-align:center}
+
+/* tables/forms */
+.table-card{background:#fff;border:1px solid #edf0f2;border-radius:15px;box-shadow:var(--shadow);overflow:auto}.table-tools{padding:14px;border-bottom:1px solid var(--line);display:flex;gap:9px}.table-tools input,.table-tools select{height:40px;border:1px solid var(--line);border-radius:10px;padding:0 12px;background:#f8fafb}
+table{width:100%;border-collapse:collapse;min-width:760px}th,td{padding:13px 14px;border-bottom:1px solid var(--line);text-align:right;font-size:13px}th{background:#f8fafb;color:#6f7b85;font-size:12px}tbody tr:hover{background:#fbfcfd}.pill{display:inline-block;padding:4px 10px;border-radius:15px;font-size:11px;font-weight:900}.ok{background:#e9f8ef;color:#168554}.pending{background:#fff6df;color:#b87b08}.danger{background:#fff0f1;color:var(--red)}.info{background:#e9f3fc;color:#1b78c1}
+.form-card{background:#fff;border:1px solid #edf0f2;border-radius:15px;box-shadow:var(--shadow);padding:21px}.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.form-grid .wide{grid-column:1/-1}.form-card textarea{width:100%;min-height:105px;border:1px solid var(--line);border-radius:11px;padding:12px;resize:vertical}.form-card input,.form-card select{width:100%;height:44px;border:1px solid var(--line);border-radius:10px;padding:0 12px;background:#fafbfc}.form-card label{display:block;font-size:12px;font-weight:900;margin-bottom:7px}
+
+/* tests */
+.quiz{display:grid;gap:14px}.question{background:#fff;border:1px solid #edf0f2;border-radius:14px;padding:17px;box-shadow:var(--shadow)}.question h4{margin:0 0 12px}.option{display:flex;gap:9px;align-items:center;padding:8px 10px;border:1px solid var(--line);border-radius:9px;margin:7px 0}
+
+/* charts */
+.report-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:15px}.chart{height:245px;display:flex;align-items:flex-end;gap:16px;padding:30px 15px 25px;border-bottom:1px solid var(--line)}.bar{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:6px;height:100%}.bar i{display:block;width:62%;background:linear-gradient(180deg,#ff4046,var(--red2));border-radius:8px 8px 2px 2px}.bar small{font-size:10px;color:var(--muted)}.ring{width:180px;height:180px;border-radius:50%;margin:25px auto;background:conic-gradient(var(--red) 0 35%,var(--blue) 35% 58%,var(--green) 58% 78%,var(--amber) 78% 100%);position:relative}.ring:after{content:"";position:absolute;inset:34px;border-radius:50%;background:#fff}
+
+/* AI */
+.ai-fab{position:fixed;left:24px;bottom:24px;width:60px;height:60px;border-radius:50%;border:0;background:linear-gradient(135deg,var(--red),var(--red2));color:#fff;font-size:24px;z-index:80;box-shadow:0 14px 32px rgba(225,27,34,.3)}.ai-box{position:fixed;left:24px;bottom:96px;width:390px;height:520px;background:#fff;border:1px solid var(--line);border-radius:18px;z-index:80;box-shadow:0 20px 55px rgba(20,35,48,.2);overflow:hidden;display:flex;flex-direction:column}.ai-head{background:linear-gradient(135deg,var(--nav),#122938);color:#fff;padding:16px;display:flex;align-items:center;justify-content:space-between}.chat{flex:1;overflow:auto;padding:14px;background:#f5f7f9}.msg{max-width:82%;padding:10px 12px;border-radius:13px;margin:8px 0;font-size:13px;line-height:1.6}.msg.bot{background:#fff;border:1px solid var(--line)}.msg.me{background:var(--red);color:#fff;margin-right:auto}.ai-input{display:flex;gap:8px;padding:12px;border-top:1px solid var(--line)}.ai-input input{flex:1;height:42px;border:1px solid var(--line);border-radius:10px;padding:0 11px}.ai-input button{width:44px;border:0;border-radius:10px;background:var(--red);color:#fff}
+
+/* modal/toast */
+.modal-wrap{position:fixed;inset:0;background:rgba(7,15,21,.5);z-index:100;display:grid;place-items:center;padding:20px}.modal{width:min(640px,96vw);max-height:88vh;overflow:auto;background:#fff;border-radius:18px;box-shadow:0 25px 70px rgba(0,0,0,.25);padding:23px}.modal h2{margin:0 0 10px}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}.toast{position:fixed;left:24px;top:90px;background:#0e8c58;color:#fff;border-radius:11px;padding:12px 16px;z-index:120;box-shadow:var(--shadow);font-weight:800;font-size:13px}
+
+@media(max-width:1100px){.kpis{grid-template-columns:repeat(2,1fr)}.grid3{grid-template-columns:1fr}.paths{grid-template-columns:repeat(3,1fr)}.course-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:800px){.login-shell{grid-template-columns:1fr}.login-visual{display:none}.login-card .mini-logo{display:block}.sidebar{transform:translateX(100%)}.topbar{right:0}.main{margin-right:0;padding:88px 13px 30px}.hero{height:360px}.hero-inner{width:100%;padding:30px 24px}.hero-inner h2{font-size:31px}.paths{grid-template-columns:repeat(2,1fr)}.course-grid{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.form-grid .wide{grid-column:auto}.report-grid{grid-template-columns:1fr}.ai-box{left:10px;right:10px;width:auto}}
 </style>
 </head>
-
 <body>
 
-<!-- ===========================================
-     LOGIN
-=========================================== -->
-
-<section id="loginPage">
-
-  <img
-    src="assets/login_bg2.jpg"
-    class="login-bg"
-    alt="Bahra Electric"
-  >
-
-  <div class="login-overlay"></div>
-
-  <div class="login-brand">
-    <h1>
-      منصة بحرة إلكتريك
-      <br>
-      <span>لتطوير الموظفين</span>
-    </h1>
-
-    <p>
-      Bahra Electric Employee Development Platform
-    </p>
-  </div>
-
-  <div class="login-panel">
-
-    <div class="login-logo">
-      <img
-        src="assets/logo_dark.jpg"
-        alt="Bahra Electric"
-      >
-    </div>
-
-    <h2>تسجيل الدخول</h2>
-
-    <p class="subtitle">
-      استخدم رقمك الوظيفي للدخول إلى حسابك
-    </p>
-
-    <div class="field">
-      <label>الرقم الوظيفي</label>
-      <input
-        id="employeeId"
-        type="text"
-        placeholder="مثال: BE-1001"
-        autocomplete="off"
-      >
-    </div>
-
-    <div class="field">
-      <label>PIN</label>
-      <input
-        id="pin"
-        type="password"
-        placeholder="أدخل رمز PIN"
-      >
-    </div>
-
-    <button
-      class="login-btn"
-      id="loginBtn"
-      onclick="login()"
-    >
-      دخول إلى المنصة
-    </button>
-
-    <div
-      class="login-error"
-      id="loginError"
-    ></div>
-
-    <div class="demo">
-      <div class="demo-title">
-        حسابات تجريبية:
+<section id="login" class="login">
+  <img class="login-bg" src="assets/login_bg2.jpg" alt="">
+  <div class="login-shade"></div>
+  <div class="login-shell">
+    <div class="login-visual">
+      <div class="brand-lock"><img src="assets/logo_dark.jpg" alt="Bahra Electric"></div>
+      <div class="login-copy">
+        <h1>منصة بحرة إلكتريك<br><span>لتطوير الموظفين</span></h1>
+        <p>منصة موحدة للتعلم والتطوير، إدارة الرحلات التدريبية، قياس المهارات، الشهادات، الاختبارات وخدمات التدريب الذكية.</p>
       </div>
-
-      <div class="demo-buttons">
-
-        <button onclick="demoLogin('admin')">
-          Admin
-        </button>
-
-        <button onclick="demoLogin('trainer')">
-          Trainer
-        </button>
-
-        <button onclick="demoLogin('employee')">
-          Employee
-        </button>
-
+      <div class="login-feats">
+        <div class="login-feat"><i>🧠</i>الذكاء الاصطناعي</div>
+        <div class="login-feat"><i>📚</i>الدورات</div>
+        <div class="login-feat"><i>📈</i>قياس التقدم</div>
+        <div class="login-feat"><i>🏆</i>الشهادات</div>
       </div>
     </div>
-
+    <div class="login-card">
+      <div class="mini-logo"><img src="assets/logo_dark.jpg"></div>
+      <h2>تسجيل الدخول</h2>
+      <p class="sub">استخدم رقمك الوظيفي للدخول إلى حسابك.</p>
+      <div class="field"><label>الرقم الوظيفي</label><input id="empId" value="BE-1001" placeholder="BE-1001"></div>
+      <div class="field"><label>PIN</label><input id="pin" type="password" placeholder="أدخل رمز PIN"></div>
+      <button class="primary" id="loginBtn">دخول إلى المنصة</button>
+      <div id="loginErr" class="login-error"></div>
+      <div class="demo">
+        <small>حسابات تجريبية:</small>
+        <div class="demo-row">
+          <button data-demo="admin">Admin</button><button data-demo="trainer">Trainer</button><button data-demo="employee">Employee</button>
+        </div>
+      </div>
+    </div>
   </div>
-
 </section>
 
-<!-- ===========================================
-     APPLICATION
-=========================================== -->
-
-<section
-  id="app"
-  class="hidden"
->
-
+<section id="app" class="app hidden">
   <aside class="sidebar">
-
-    <div class="side-logo">
-      <img
-        src="assets/logo_light.jpg"
-        alt="Bahra Electric"
-      >
-    </div>
-
-    <button
-      class="nav-item active"
-      data-page="home"
-      onclick="showPage('home',this)"
-    >
-      🏠 الرئيسية
-    </button>
-
-    <button
-      class="nav-item"
-      data-page="courses"
-      onclick="showPage('courses',this)"
-    >
-      🎓 الدورات التدريبية
-    </button>
-
-    <button
-      class="nav-item"
-      data-page="employees"
-      onclick="showPage('employees',this)"
-    >
-      👥 الموظفون
-    </button>
-
-    <button
-      class="nav-item"
-      data-page="sessions"
-      onclick="showPage('sessions',this)"
-    >
-      📅 الجلسات التدريبية
-    </button>
-
-    <button
-      class="nav-item"
-      data-page="certificates"
-      onclick="showPage('certificates',this)"
-    >
-      🏆 الشهادات
-    </button>
-
-    <button
-      class="nav-item"
-      data-page="reports"
-      onclick="showPage('reports',this)"
-    >
-      📊 التقارير
-    </button>
-
-    <div class="logout">
-
-      <button
-        class="nav-item"
-        onclick="logout()"
-      >
-        ↪ تسجيل الخروج
-      </button>
-
-    </div>
-
+    <div class="side-logo"><img src="assets/logo_light.jpg" alt=""></div>
+    <div class="nav-label">المنصة</div>
+    <button class="nav-item active" data-page="home"><span>🏠</span>الصفحة الرئيسية</button>
+    <button class="nav-item" data-page="courses"><span>📖</span>الدورات التدريبية</button>
+    <button class="nav-item" data-page="sessions"><span>📅</span>الجلسات التدريبية</button>
+    <button class="nav-item" data-page="requests"><span>📝</span>طلبات التدريب</button>
+    <button class="nav-item" data-page="tests"><span>✅</span>الاختبارات والتقييم</button>
+    <button class="nav-item" data-page="certificates"><span>🏅</span>الشهادات</button>
+    <button class="nav-item" data-page="needs"><span>📊</span>الاحتياجات التدريبية</button>
+    <button class="nav-item" data-page="reports"><span>📈</span>التقارير والتحليلات</button>
+    <div class="nav-label">الإدارة</div>
+    <button class="nav-item" data-page="employees"><span>👥</span>الموظفون</button>
+    <button class="nav-item" data-page="trainers"><span>🧑‍🏫</span>المدربون</button>
+    <button class="nav-item" data-page="ai"><span>🤖</span>الذكاء الاصطناعي</button>
+    <button class="nav-item" data-page="settings"><span>⚙️</span>الإعدادات</button>
+    <button class="nav-item" id="logout"><span>↪</span>تسجيل الخروج</button>
+    <div class="side-footer"><b>معاً.<br>نصنع مستقبلاً <em>أكثر إشراقاً</em></b><small>PEOPLE<br>ENERGY<br>PROGRESS</small></div>
   </aside>
 
   <header class="topbar">
-
-    <div class="search">
-      <input
-        type="text"
-        placeholder="ابحث عن الدورات، المهارات أو المواضيع..."
-      >
-    </div>
-
-    <div class="profile">
-
-      <div>
-        <div
-          class="profile-name"
-          id="profileName"
-        >
-          -
-        </div>
-
-        <div
-          class="profile-role"
-          id="profileRole"
-        >
-          -
-        </div>
-      </div>
-
-      <img
-        src="assets/avatar.jpg"
-        alt="User"
-      >
-
-    </div>
-
+    <div class="search"><b>⌕</b><input id="globalSearch" placeholder="ابحث عن الدورات، الموظفين، المهارات أو الخدمات..."></div>
+    <div class="top-spacer"></div>
+    <button class="top-btn" title="الإشعارات">🔔</button>
+    <button class="top-btn" id="langBtn" title="اللغة">🌐</button>
+    <button class="top-btn" id="themeBtn" title="الوضع">◐</button>
+    <div class="profile"><div><strong id="pName">—</strong><small id="pRole">—</small></div><img src="assets/avatar.jpg"></div>
   </header>
 
-  <main
-    class="main"
-    id="mainContent"
-  ></main>
+  <main id="main" class="main"></main>
 
+  <button id="aiFab" class="ai-fab">✦</button>
+  <div id="aiBox" class="ai-box hidden">
+    <div class="ai-head"><div><strong>مساعد بحرة الذكي</strong><small style="display:block;opacity:.75">التعلم والتطوير</small></div><button id="aiClose" style="border:0;background:transparent;color:#fff;font-size:22px">×</button></div>
+    <div id="chat" class="chat"></div>
+    <div class="ai-input"><input id="aiInput" placeholder="اسألني عن دورة أو مهارة أو طلب تدريب..."><button id="aiSend">➤</button></div>
+  </div>
 </section>
 
+<div id="modalWrap" class="modal-wrap hidden"><div id="modal" class="modal"></div></div>
+<div id="toast" class="toast hidden"></div>
+
 <script>
-
-/* =========================================================
-   BACKEND
-========================================================= */
-
-const CONFIG = {
-
-  APPS_SCRIPT_URL:
-    "https://script.google.com/macros/s/AKfycbwo5AI8mYpFvJrRWxMdnGGCARfBsuUdWNNs94cKJJ25Nj7PIZzv9EQrgSHrhiiI8hWqBQ/exec",
-
+const CONFIG={
+  APPS_SCRIPT_URL:"https://script.google.com/macros/s/AKfycbwo5AI8mYpFvJrRWxMdnGGCARfBsuUdWNNs94cKJJ25Nj7PIZzv9EQrgSHrhiiI8hWqBQ/exec",
   USE_BACKEND:true
-
 };
 
+const courses=[
+ {id:"C001",title:"مقدمة في الذكاء الاصطناعي",path:"المهارات العامة والمهنية",level:"مبتدئ",hours:4,img:"assets/course1.jpg",desc:"فهم أساسيات الذكاء الاصطناعي وتطبيقاته العملية في بيئة العمل.",enrolled:36},
+ {id:"C002",title:"تطبيقات الذكاء الاصطناعي في الموارد البشرية",path:"المهارات العامة والمهنية",level:"متوسط",hours:6,img:"assets/course2.jpg",desc:"استخدام الذكاء الاصطناعي في التوظيف، التحليل، التعلم والتطوير.",enrolled:31},
+ {id:"C003",title:"السلامة والصحة المهنية",path:"السلامة والصحة المهنية",level:"مبتدئ",hours:6,img:"assets/course3.jpg",desc:"الممارسات الأساسية للسلامة وتقليل المخاطر المهنية.",enrolled:44},
+ {id:"C004",title:"أساسيات الأنظمة الكهربائية",path:"الأنظمة الكهربائية والطاقة",level:"متوسط",hours:8,img:"assets/pathbg1.jpg",desc:"مبادئ الأنظمة الكهربائية والمكونات الأساسية.",enrolled:28},
+ {id:"C005",title:"تقنيات الكابلات والموصلات",path:"الكابلات والموصلات",level:"متقدم",hours:8,img:"assets/pathbg2.jpg",desc:"تصميم وتصنيع وفحص الكابلات والموصلات.",enrolled:25},
+ {id:"C006",title:"أساسيات الطاقة المتجددة",path:"الطاقة المتجددة والاستدامة",level:"متوسط",hours:6,img:"assets/pathbg3.jpg",desc:"الطاقة الشمسية وطاقة الرياح والاستدامة.",enrolled:22},
+ {id:"C007",title:"مهارات القيادة الحديثة",path:"القيادة والتطوير الإداري",level:"متوسط",hours:6,img:"assets/pathbg5.jpg",desc:"القيادة، التفويض، التحفيز وصناعة القرار.",enrolled:39},
+ {id:"C008",title:"إدارة المشاريع الاحترافية",path:"القيادة والتطوير الإداري",level:"متقدم",hours:10,img:"assets/pathbg6.jpg",desc:"أساسيات تخطيط ومتابعة وإغلاق المشاريع.",enrolled:19},
+ {id:"C009",title:"تحليل البيانات وصنع القرار",path:"المهارات العامة والمهنية",level:"متوسط",hours:7,img:"assets/course1.jpg",desc:"استخدام البيانات لدعم القرارات وتحسين الأداء.",enrolled:27},
+ {id:"C010",title:"الأمن السيبراني للموظفين",path:"المهارات العامة والمهنية",level:"مبتدئ",hours:3,img:"assets/course2.jpg",desc:"رفع الوعي الأمني وحماية البيانات والحسابات.",enrolled:42},
+ {id:"C011",title:"التواصل وإدارة النزاعات",path:"القيادة والتطوير الإداري",level:"متوسط",hours:5,img:"assets/course3.jpg",desc:"التواصل الفعال وإدارة الخلافات المهنية.",enrolled:34},
+ {id:"C012",title:"الجودة والتحسين المستمر",path:"المهارات العامة والمهنية",level:"متقدم",hours:8,img:"assets/pathbg4.jpg",desc:"أدوات الجودة والتحسين المستمر في بيئة التصنيع.",enrolled:24}
+];
 
-/* =========================================================
-   FALLBACK USERS
-========================================================= */
+const sessions=[
+ {id:"S1",course:"أساسيات الموارد البشرية",day:"07",month:"سبتمبر",time:"09:00 - 13:00",place:"قاعة التدريب 1",status:"قادمة"},
+ {id:"S2",course:"مهارات القيادة",day:"10",month:"سبتمبر",time:"10:00 - 12:00",place:"عبر الإنترنت",status:"قادمة"},
+ {id:"S3",course:"السلامة في بيئة العمل",day:"15",month:"سبتمبر",time:"09:00 - 13:00",place:"قاعة التدريب 2",status:"قادمة"},
+ {id:"S4",course:"مقدمة في الذكاء الاصطناعي",day:"18",month:"سبتمبر",time:"11:00 - 13:00",place:"عبر الإنترنت",status:"قادمة"},
+ {id:"S5",course:"تحليل البيانات",day:"22",month:"سبتمبر",time:"09:30 - 12:30",place:"قاعة التدريب 1",status:"قادمة"}
+];
 
-const demoUsers = {
+const baseNames=["د. هادي الغامدي","سلطان الشمري","إبراهيم الشهري","فيصل المطيري","هاني العمري","عبدالرحمن المالكي","ماجد الغامدي","طلال الصاعدي","سعد الفيفي","ريم العتيبي"];
+const deps=["الموارد البشرية","الجودة","السلامة","الصيانة","سلسلة الإمداد","المبيعات","تقنية المعلومات","المالية","الإنتاج","الهندسة"];
+const employees=Array.from({length:50},(_,i)=>({
+ id:"BE-"+String(1001+i),name:i<baseNames.length?baseNames[i]:`موظف بحرة ${i+1}`,dept:deps[i%deps.length],
+ role:i===0?"Admin":(i===1||i===7||i===14?"Trainer":"Employee"),pin:i===0?"1234":i===1?"2345":i===2?"9486":String(3000+i),
+ progress:[70,64,88,35,92,57,73,81,49,67][i%10],hours:8+(i%9)*6,certs:i%4,status:"نشط"
+}));
 
-  admin:{
-    EmployeeID:"BE-1001",
-    Name_AR:"مدير النظام",
-    Role:"Admin",
-    PIN:"1234",
-    Department_AR:"الموارد البشرية"
-  },
+let requests=[
+ {id:"R-1001",emp:"BE-1003",name:"إبراهيم الشهري",course:"مقدمة في الذكاء الاصطناعي",date:"2026-09-05",status:"قيد الموافقة",reason:"تطوير مهارات الذكاء الاصطناعي في العمل"},
+ {id:"R-1002",emp:"BE-1005",name:"هاني العمري",course:"مهارات القيادة الحديثة",date:"2026-09-06",status:"معتمد",reason:"الاستعداد لدور إشرافي"}
+];
+let certificates=[
+ {id:"CERT-001",emp:"BE-1001",name:"د. هادي الغامدي",course:"السلامة في بيئة العمل",date:"2026-07-10"},
+ {id:"CERT-002",emp:"BE-1002",name:"سلطان الشمري",course:"مهارات القيادة الحديثة",date:"2026-08-15"},
+ {id:"CERT-003",emp:"BE-1003",name:"إبراهيم الشهري",course:"أساسيات الطاقة المتجددة",date:"2026-08-28"}
+];
+let trainingNeeds=[
+ {dept:"الهندسة",skill:"تحليل البيانات",priority:"عالية",employees:12,plan:"Q4 2026"},
+ {dept:"الموارد البشرية",skill:"الذكاء الاصطناعي",priority:"عالية",employees:8,plan:"Q4 2026"},
+ {dept:"الإنتاج",skill:"السلامة",priority:"متوسطة",employees:20,plan:"Q1 2027"},
+ {dept:"المبيعات",skill:"التفاوض",priority:"متوسطة",employees:10,plan:"Q1 2027"}
+];
 
-  trainer:{
-    EmployeeID:"BE-1002",
-    Name_AR:"سلطان الشمري",
-    Role:"Trainer",
-    PIN:"2345",
-    Department_AR:"الموارد البشرية"
-  },
+let USER=null, currentPage="home";
+const el=id=>document.getElementById(id);
+const roleAr=r=>r==="Admin"?"مدير النظام":r==="Trainer"?"مدرب":"موظف";
+const showToast=t=>{el("toast").textContent=t;el("toast").classList.remove("hidden");setTimeout(()=>el("toast").classList.add("hidden"),2300)};
+const setModal=html=>{el("modal").innerHTML=html;el("modalWrap").classList.remove("hidden")};
+const closeModal=()=>el("modalWrap").classList.add("hidden");
 
-  employee:{
-    EmployeeID:"BE-1003",
-    Name_AR:"إبراهيم الشهري",
-    Role:"Employee",
-    PIN:"9486",
-    Department_AR:"الجودة"
-  }
-
-};
-
-
-let currentUser = null;
-
-
-/* =========================================================
-   LOGIN
-========================================================= */
+function demo(role){
+ const u=employees.find(x=>x.role===({admin:"Admin",trainer:"Trainer",employee:"Employee"}[role]));
+ el("empId").value=u.id;el("pin").value=u.pin;
+}
+document.querySelectorAll("[data-demo]").forEach(b=>b.onclick=()=>demo(b.dataset.demo));
 
 async function login(){
+ const id=el("empId").value.trim(),pin=el("pin").value.trim();el("loginErr").textContent="";
+ if(!id||!pin){el("loginErr").textContent="يرجى إدخال الرقم الوظيفي وPIN";return}
+ let remote=null;
+ if(CONFIG.USE_BACKEND&&CONFIG.APPS_SCRIPT_URL){
+   try{
+     const r=await fetch(`${CONFIG.APPS_SCRIPT_URL}?action=login&id=${encodeURIComponent(id)}&pin=${encodeURIComponent(pin)}`);
+     const j=await r.json(); if(j&&j.ok&&j.user) remote=j.user;
+   }catch(e){}
+ }
+ const local=employees.find(x=>x.id===id&&x.pin===pin);
+ if(!remote&&!local){el("loginErr").textContent="الرقم الوظيفي أو PIN غير صحيح";return}
+ USER=remote||local;
+ if(remote){USER.id=USER.EmployeeID||USER.id;USER.name=USER.Name_AR||USER.Name||USER.name;USER.role=USER.Role||USER.role;USER.progress=USER.Progress||70}
+ el("login").classList.add("hidden");el("app").classList.remove("hidden");el("pName").textContent=USER.name||USER.id;el("pRole").textContent=roleAr(USER.role);
+ render("home");
+}
+el("loginBtn").onclick=login;el("pin").addEventListener("keydown",e=>{if(e.key==="Enter")login()});
+el("logout").onclick=()=>{USER=null;el("app").classList.add("hidden");el("login").classList.remove("hidden")};
 
-  const id =
-    document
-      .getElementById("employeeId")
-      .value
-      .trim();
-
-  const pin =
-    document
-      .getElementById("pin")
-      .value
-      .trim();
-
-  const error =
-    document.getElementById("loginError");
-
-  const btn =
-    document.getElementById("loginBtn");
-
-
-  error.textContent = "";
-
-
-  if(!id || !pin){
-
-    error.textContent =
-      "يرجى إدخال الرقم الوظيفي وPIN";
-
-    return;
-
-  }
-
-
-  btn.disabled = true;
-  btn.textContent = "جاري تسجيل الدخول...";
-
-
-  if(CONFIG.USE_BACKEND){
-
-    try{
-
-      const url =
-        CONFIG.APPS_SCRIPT_URL +
-        "?action=login&id=" +
-        encodeURIComponent(id) +
-        "&pin=" +
-        encodeURIComponent(pin);
-
-
-      const response =
-        await fetch(url);
-
-
-      const data =
-        await response.json();
-
-
-      if(data && data.ok && data.user){
-
-        openApp(data.user);
-
-        return;
-
-      }
-
-    }
-    catch(error){
-
-      console.warn(
-        "Backend login error:",
-        error
-      );
-
-    }
-
-  }
-
-
-  const fallback =
-    Object.values(demoUsers)
-      .find(
-        u =>
-          u.EmployeeID === id &&
-          u.PIN === pin
-      );
-
-
-  if(fallback){
-
-    openApp(fallback);
-
-  }
-  else{
-
-    error.textContent =
-      "الرقم الوظيفي أو PIN غير صحيح";
-
-  }
-
-
-  btn.disabled = false;
-  btn.textContent =
-    "دخول إلى المنصة";
-
+document.querySelectorAll(".nav-item[data-page]").forEach(b=>b.onclick=()=>render(b.dataset.page));
+function render(page){
+ currentPage=page;document.querySelectorAll(".nav-item[data-page]").forEach(x=>x.classList.toggle("active",x.dataset.page===page));
+ const m=el("main");
+ ({home:homePage,courses:coursesPage,sessions:sessionsPage,requests:requestsPage,tests:testsPage,certificates:certificatesPage,needs:needsPage,reports:reportsPage,employees:employeesPage,trainers:trainersPage,ai:aiPage,settings:settingsPage}[page]||homePage)(m);
+ window.scrollTo({top:0,behavior:"smooth"});
 }
 
+function head(title,sub,actions=""){return `<div class="page-head"><div><h1>${title}</h1><p>${sub}</p></div><div class="toolbar">${actions}</div></div>`}
+function kpi(ic,n,l,tr="+12%"){return `<div class="kpi"><div class="ic">${ic}</div><div><b>${n}</b><small>${l}</small></div><span class="trend">↑ ${tr}</span></div>`}
+function courseMini(c){return `<div class="course-mini"><img src="${c.img}"><div><b>${c.title}</b><small>${c.path}</small><span class="level">${c.level}</span></div></div>`}
+function ses(s){return `<div class="session"><div class="datebox"><b>${s.day}</b>${s.month}</div><div><strong>${s.course}</strong><small>${s.time} · ${s.place}</small></div></div>`}
+function pathCard(i,t){return `<div class="path"><img src="assets/pathbg${i}.jpg"><strong>${t}</strong></div>`}
 
-/* =========================================================
-   DEMO
-========================================================= */
-
-function demoLogin(role){
-
-  const u =
-    demoUsers[role];
-
-  document
-    .getElementById("employeeId")
-    .value =
-      u.EmployeeID;
-
-  document
-    .getElementById("pin")
-    .value =
-      u.PIN;
-
+function homePage(m){
+ m.innerHTML=`<section class="hero"><img src="assets/hero_worker.jpg"><div class="hero-inner"><h2>معاً نطوّر قدراتنا<br><span>لنصنع مستقبلاً أفضل</span></h2><p>منصة بحرة إلكتريك للتعلم والتطوير، تمكّن موظفينا بالمعرفة والمهارات والفرص لبناء مستقبل أكثر إشراقاً.</p><button class="btn red" onclick="render('courses')">ابدأ رحلتك في التعلم ←</button></div></section>
+ <section class="kpis">${kpi("📖",12,"الدورات التدريبية","+20%")}${kpi("📅",5,"الجلسات القادمة","+25%")}${kpi("👥",50,"الموظفون المسجلون","+12%")}${kpi("🏅",36,"الشهادات الصادرة","+18%")}</section>
+ <section class="grid3"><div class="card"><div class="card-head"><h3>أحدث الدورات</h3><button onclick="render('courses')">عرض الكل ←</button></div>${courses.slice(0,3).map(courseMini).join("")}</div>
+ <div class="card"><div class="card-head"><h3>رحلتي التطويرية</h3><button>عرض التفاصيل ←</button></div><div class="donut"><strong>${USER?.progress||70}%</strong></div><div style="text-align:center"><b>أنت تسير بخطى ثابتة نحو أهدافك</b><p style="color:var(--muted);font-size:12px">استمر في التعلم والتطوير</p></div></div>
+ <div class="card"><div class="card-head"><h3>الجلسات القادمة</h3><button onclick="render('sessions')">عرض الكل ←</button></div>${sessions.slice(0,3).map(ses).join("")}</div></section>
+ <div class="page-head" style="margin-top:4px"><div><h1 style="font-size:19px">المسارات التدريبية</h1></div></div>
+ <section class="paths">${pathCard(1,"الأنظمة الكهربائية والطاقة")}${pathCard(2,"الكابلات والموصلات")}${pathCard(3,"الطاقة المتجددة والاستدامة")}${pathCard(4,"السلامة والصحة المهنية")}${pathCard(5,"القيادة والتطوير الإداري")}${pathCard(6,"المهارات العامة والمهنية")}</section>`;
 }
 
-
-/* =========================================================
-   OPEN APP
-========================================================= */
-
-function openApp(user){
-
-  currentUser = user;
-
-
-  document
-    .getElementById("loginPage")
-    .classList
-    .add("hidden");
-
-
-  document
-    .getElementById("app")
-    .classList
-    .remove("hidden");
-
-
-  document
-    .getElementById("profileName")
-    .textContent =
-      user.Name_AR ||
-      user.Name ||
-      user.Name_EN ||
-      user.EmployeeID;
-
-
-  document
-    .getElementById("profileRole")
-    .textContent =
-      roleArabic(user.Role);
-
-
-  showPage("home");
-
-
-  document
-    .getElementById("loginBtn")
-    .disabled = false;
-
-
-  document
-    .getElementById("loginBtn")
-    .textContent =
-      "دخول إلى المنصة";
-
+function coursesPage(m){
+ m.innerHTML=head("الدورات التدريبية","استكشف جميع الدورات والبرامج المتاحة","<button class='btn red' onclick='openRecommendation()'>✦ توصية ذكية</button>")+
+ `<div class="filters"><button class="filter active">جميع الدورات</button><button class="filter">الذكاء الاصطناعي</button><button class="filter">السلامة</button><button class="filter">القيادة</button><button class="filter">الطاقة</button><button class="filter">الكابلات</button></div>
+ <section class="course-grid">${courses.map(c=>`<article class="course-card"><img src="${c.img}"><div class="course-body"><span class="pill ${c.level==="متقدم"?"danger":c.level==="متوسط"?"pending":"ok"}">${c.level}</span><h3>${c.title}</h3><div class="course-meta"><span>⏱ ${c.hours} ساعات</span><span>👥 ${c.enrolled} مسجل</span></div><p style="font-size:12px;color:var(--muted);line-height:1.7">${c.desc}</p><div class="course-actions"><button class="btn" onclick="courseDetails('${c.id}')">التفاصيل</button><button class="btn red" onclick="enroll('${c.id}')">طلب التسجيل</button></div></div></article>`).join("")}</section>`;
+}
+function courseDetails(id){
+ const c=courses.find(x=>x.id===id);
+ setModal(`<h2>${c.title}</h2><img src="${c.img}" style="width:100%;height:230px;object-fit:cover;border-radius:13px"><p style="line-height:1.9;color:#56616b">${c.desc}</p><div class="kpis" style="grid-template-columns:repeat(3,1fr)">${kpi("⏱",c.hours,"ساعات التدريب","")}${kpi("📊",c.level,"المستوى","")}${kpi("👥",c.enrolled,"المسجلون","")}</div><h3>محتوى الدورة</h3><ul style="line-height:2"><li>مقدمة ومفاهيم أساسية</li><li>أمثلة تطبيقية من بيئة العمل</li><li>تمارين عملية ودراسة حالة</li><li>اختبار ختامي وتقييم</li></ul><div class="modal-actions"><button class="btn" onclick="closeModal()">إغلاق</button><button class="btn red" onclick="closeModal();enroll('${id}')">طلب التسجيل</button></div>`);
+}
+function enroll(id){
+ const c=courses.find(x=>x.id===id);
+ setModal(`<h2>طلب التسجيل في دورة</h2><p style="color:var(--muted)">الدورة: <b>${c.title}</b></p><div class="form-grid"><div><label>نوع التدريب</label><select><option>حضوري</option><option>أونلاين</option></select></div><div><label>المدة</label><input value="${c.hours} ساعات" disabled></div><div class="wide"><label>سبب التسجيل</label><textarea id="enrollReason" placeholder="اكتب سبب حاجتك لهذه الدورة..."></textarea></div></div><div class="modal-actions"><button class="btn" onclick="closeModal()">إلغاء</button><button class="btn red" onclick="submitEnroll('${id}')">إرسال الطلب</button></div>`);
+}
+function submitEnroll(id){
+ const c=courses.find(x=>x.id===id),reason=el("enrollReason").value.trim()||"تطوير المهارات المهنية";
+ requests.unshift({id:"R-"+Date.now().toString().slice(-5),emp:USER.id,name:USER.name,course:c.title,date:new Date().toISOString().slice(0,10),status:"قيد الموافقة",reason});closeModal();showToast("تم إرسال طلب التسجيل بنجاح");render("requests");
+}
+function openRecommendation(){
+ const rec=courses.filter(c=>c.title.includes("الذكاء")||c.title.includes("القيادة")).slice(0,3);
+ setModal(`<h2>✦ توصيات الذكاء الاصطناعي</h2><p style="color:var(--muted)">بناءً على دورك وتقدمك التدريبي نقترح لك:</p>${rec.map(courseMini).join("")}<div class="modal-actions"><button class="btn red" onclick="closeModal()">تم</button></div>`);
 }
 
-
-/* =========================================================
-   ROLE NAME
-========================================================= */
-
-function roleArabic(role){
-
-  if(role === "Admin")
-    return "مدير النظام";
-
-  if(role === "Trainer")
-    return "مدرب";
-
-  return "موظف";
-
+function sessionsPage(m){
+ m.innerHTML=head("الجلسات التدريبية","جدول الجلسات الحضورية والافتراضية","<button class='btn red' onclick='showToast(\"تمت إضافة الجلسة إلى التقويم\")'>+ إضافة إلى تقويمي</button>")+
+ `<div class="table-card"><table><thead><tr><th>الدورة</th><th>التاريخ</th><th>الوقت</th><th>المكان</th><th>الحالة</th><th>إجراء</th></tr></thead><tbody>${sessions.map(s=>`<tr><td><b>${s.course}</b></td><td>${s.day} ${s.month}</td><td>${s.time}</td><td>${s.place}</td><td><span class="pill ok">${s.status}</span></td><td><button class="btn" onclick="showToast('تم الحجز في الجلسة')">حجز</button></td></tr>`).join("")}</tbody></table></div>`;
 }
 
+function requestsPage(m){
+ m.innerHTML=head("طلبات التدريب","متابعة جميع طلبات التسجيل والدورات","<button class='btn red' onclick='render(\"courses\")'>+ طلب تدريب جديد</button>")+
+ `<div class="table-card"><div class="table-tools"><input placeholder="بحث في الطلبات..." oninput="filterRows(this.value)"><select><option>جميع الحالات</option><option>قيد الموافقة</option><option>معتمد</option></select></div><table id="reqTable"><thead><tr><th>رقم الطلب</th><th>الموظف</th><th>الدورة</th><th>التاريخ</th><th>السبب</th><th>الحالة</th></tr></thead><tbody>${requests.map(r=>`<tr><td>${r.id}</td><td>${r.name}</td><td>${r.course}</td><td>${r.date}</td><td>${r.reason}</td><td><span class="pill ${r.status==="معتمد"?"ok":"pending"}">${r.status}</span></td></tr>`).join("")}</tbody></table></div>`;
+}
+function filterRows(q){document.querySelectorAll("#reqTable tbody tr").forEach(tr=>tr.style.display=tr.textContent.includes(q)?"":"none")}
 
-/* =========================================================
-   NAVIGATION
-========================================================= */
+function testsPage(m){
+ m.innerHTML=head("الاختبارات والتقييم","اختبارات قبل وبعد التدريب وقياس المعرفة","<button class='btn soft' onclick='startQuiz()'>ابدأ اختبار تجريبي</button>")+
+ `<section class="kpis">${kpi("📝",4,"اختبارات متاحة","+1")}${kpi("✅",7,"اختبارات مكتملة","+18%")}${kpi("🎯","86%","متوسط النتيجة","+6%")}${kpi("⭐",4.6,"متوسط تقييم الدورات","+4%")}</section>
+ <div class="table-card"><table><thead><tr><th>الاختبار</th><th>الدورة</th><th>النوع</th><th>المدة</th><th>الحالة</th><th>إجراء</th></tr></thead><tbody>
+ <tr><td>اختبار الذكاء الاصطناعي</td><td>مقدمة في الذكاء الاصطناعي</td><td>بعدي</td><td>15 دقيقة</td><td><span class="pill pending">متاح</span></td><td><button class="btn red" onclick="startQuiz()">ابدأ</button></td></tr>
+ <tr><td>تقييم السلامة</td><td>السلامة والصحة المهنية</td><td>بعدي</td><td>10 دقائق</td><td><span class="pill ok">مكتمل</span></td><td><button class="btn">عرض النتيجة</button></td></tr></tbody></table></div>`;
+}
+function startQuiz(){
+ setModal(`<h2>اختبار: مقدمة في الذكاء الاصطناعي</h2><div class="quiz">
+ <div class="question"><h4>1. أي مما يلي مثال على استخدام الذكاء الاصطناعي في العمل؟</h4><label class="option"><input type="radio" name="q1" value="1"> تحليل البيانات واقتراح القرارات</label><label class="option"><input type="radio" name="q1"> طباعة المستندات فقط</label></div>
+ <div class="question"><h4>2. ما الهدف من الذكاء الاصطناعي التوليدي؟</h4><label class="option"><input type="radio" name="q2" value="1"> إنشاء محتوى جديد بناءً على تعليمات</label><label class="option"><input type="radio" name="q2"> تخزين الملفات فقط</label></div>
+ </div><div class="modal-actions"><button class="btn" onclick="closeModal()">إلغاء</button><button class="btn red" onclick="finishQuiz()">إرسال الاختبار</button></div>`);
+}
+function finishQuiz(){closeModal();showToast("تم إرسال الاختبار — نتيجتك 100%")}
 
-function showPage(page,button){
-
-  document
-    .querySelectorAll(".nav-item")
-    .forEach(
-      x =>
-        x.classList.remove("active")
-    );
-
-
-  if(button)
-    button.classList.add("active");
-
-
-  if(page === "home")
-    renderHome();
-
-  else if(page === "courses")
-    renderCourses();
-
-  else if(page === "employees")
-    renderEmployees();
-
-  else if(page === "sessions")
-    renderSessions();
-
-  else if(page === "certificates")
-    renderCertificates();
-
-  else if(page === "reports")
-    renderReports();
-
+function certificatesPage(m){
+ m.innerHTML=head("الشهادات","جميع الشهادات التي تم الحصول عليها","")+
+ `<section class="kpis">${kpi("🏅",36,"إجمالي الشهادات","+18%")}${kpi("✅",32,"شهادة مكتملة","+12%")}${kpi("⏳",4,"قيد الإصدار","")}${kpi("📥",29,"تم تنزيلها","+8%")}</section>
+ <div class="table-card"><table><thead><tr><th>رقم الشهادة</th><th>الموظف</th><th>اسم الدورة</th><th>تاريخ الإصدار</th><th>الحالة</th><th>تحميل</th></tr></thead><tbody>${certificates.map(c=>`<tr><td>${c.id}</td><td>${c.name}</td><td>${c.course}</td><td>${c.date}</td><td><span class="pill ok">مكتملة</span></td><td><button class="btn" onclick="showToast('تم تجهيز الشهادة للتحميل')">⬇ تحميل</button></td></tr>`).join("")}</tbody></table></div>`;
 }
 
+function needsPage(m){
+ m.innerHTML=head("الاحتياجات التدريبية","تحليل الفجوات المهارية وخطة التدريب","<button class='btn red' onclick='addNeed()'>+ إضافة احتياج</button>")+
+ `<section class="kpis">${kpi("🎯",18,"مهارة حرجة","+3")}${kpi("👥",50,"موظفاً ضمن التحليل","+12%")}${kpi("📚",9,"برامج مقترحة","+2")}${kpi("✦",7,"توصيات AI","+4")}</section>
+ <div class="table-card"><table><thead><tr><th>القسم</th><th>المهارة المطلوبة</th><th>الأولوية</th><th>عدد الموظفين</th><th>الخطة</th><th>توصية</th></tr></thead><tbody>${trainingNeeds.map(n=>`<tr><td>${n.dept}</td><td>${n.skill}</td><td><span class="pill ${n.priority==="عالية"?"danger":"pending"}">${n.priority}</span></td><td>${n.employees}</td><td>${n.plan}</td><td><button class="btn soft" onclick="showToast('تم إنشاء توصية تدريبية')">✦ AI</button></td></tr>`).join("")}</tbody></table></div>`;
+}
+function addNeed(){setModal(`<h2>إضافة احتياج تدريبي</h2><div class="form-grid"><div><label>القسم</label><select id="nDept">${deps.map(d=>`<option>${d}</option>`).join("")}</select></div><div><label>المهارة</label><input id="nSkill"></div><div><label>الأولوية</label><select id="nPri"><option>عالية</option><option>متوسطة</option><option>منخفضة</option></select></div><div><label>عدد الموظفين</label><input id="nNum" type="number" value="5"></div></div><div class="modal-actions"><button class="btn" onclick="closeModal()">إلغاء</button><button class="btn red" onclick="saveNeed()">حفظ</button></div>`)}
+function saveNeed(){trainingNeeds.push({dept:el("nDept").value,skill:el("nSkill").value||"مهارة جديدة",priority:el("nPri").value,employees:+el("nNum").value,plan:"Q4 2026"});closeModal();showToast("تم حفظ الاحتياج");render("needs")}
 
-/* =========================================================
-   HOME
-========================================================= */
-
-function renderHome(){
-
-  const main =
-    document.getElementById(
-      "mainContent"
-    );
-
-
-  main.innerHTML = `
-
-  <section class="hero">
-
-    <img
-      src="assets/hero_worker.jpg"
-      alt="Bahra Electric"
-    >
-
-    <div class="hero-content">
-
-      <h1>
-        استثمر في مهاراتك
-        <br>
-        وابنِ <span>مستقبلك</span>
-      </h1>
-
-      <p>
-        استكشف فرص التعلم والتطوير المصممة
-        لدعم مسيرتك المهنية في بحرة إلكتريك.
-      </p>
-
-      <button onclick="showPage('courses')">
-        استكشف الدورات
-      </button>
-
-    </div>
-
-  </section>
-
-
-  <section class="kpis">
-
-    ${kpi(
-      "🎓",
-      "12",
-      "الدورات التدريبية"
-    )}
-
-    ${kpi(
-      "📅",
-      "5",
-      "الجلسات القادمة"
-    )}
-
-    ${kpi(
-      "👥",
-      "50",
-      "الموظفون"
-    )}
-
-    ${kpi(
-      "🏆",
-      "38",
-      "الشهادات"
-    )}
-
-  </section>
-
-
-  <section class="dashboard-grid">
-
-    <div class="card">
-
-      <div class="card-title">
-        <h3>أحدث الدورات</h3>
-        <span>عرض الكل</span>
-      </div>
-
-      ${course(
-        "assets/course1.jpg",
-        "السلامة والصحة المهنية",
-        "مبتدئ"
-      )}
-
-      ${course(
-        "assets/course2.jpg",
-        "أساسيات الأنظمة الكهربائية",
-        "متوسط"
-      )}
-
-      ${course(
-        "assets/course3.jpg",
-        "القيادة والتطوير الإداري",
-        "متقدم"
-      )}
-
-    </div>
-
-
-    <div class="card center">
-
-      <div class="card-title">
-        <h3>رحلتي التدريبية</h3>
-      </div>
-
-      <div class="donut">
-        <span>70%</span>
-      </div>
-
-      <h3>
-        تقدم ممتاز
-      </h3>
-
-      <p>
-        استمر في تطوير مهاراتك
-      </p>
-
-    </div>
-
-
-    <div class="card">
-
-      <div class="card-title">
-        <h3>الجلسات القادمة</h3>
-        <span>عرض الكل</span>
-      </div>
-
-      ${session(
-        "12",
-        "سبتمبر",
-        "السلامة الصناعية"
-      )}
-
-      ${session(
-        "18",
-        "سبتمبر",
-        "مهارات القيادة"
-      )}
-
-      ${session(
-        "25",
-        "سبتمبر",
-        "الأنظمة الكهربائية"
-      )}
-
-    </div>
-
-  </section>
-
-
-  <div class="section-title">
-    <h2>المسارات التدريبية</h2>
-  </div>
-
-
-  <section class="paths">
-
-    ${path(
-      "assets/pathbg1.jpg",
-      "الأنظمة الكهربائية والطاقة"
-    )}
-
-    ${path(
-      "assets/pathbg2.jpg",
-      "الكابلات والموصلات"
-    )}
-
-    ${path(
-      "assets/pathbg3.jpg",
-      "الطاقة المتجددة والاستدامة"
-    )}
-
-    ${path(
-      "assets/pathbg4.jpg",
-      "السلامة والصحة المهنية"
-    )}
-
-    ${path(
-      "assets/pathbg5.jpg",
-      "القيادة والتطوير الإداري"
-    )}
-
-    ${path(
-      "assets/pathbg6.jpg",
-      "المهارات العامة والمهنية"
-    )}
-
-  </section>
-
-  `;
-
+function reportsPage(m){
+ m.innerHTML=head("التقارير والتحليلات","مؤشرات التعلم والتطوير وقياس الأثر","<button class='btn red' onclick='showToast(\"تم تصدير التقرير\")'>تصدير التقرير</button>")+
+ `<section class="kpis">${kpi("👥",50,"الموظفون","")}${kpi("📖",12,"الدورات","")}${kpi("🏅",36,"الشهادات","")}${kpi("⏱",640,"ساعة تدريب","")}</section>
+ <section class="report-grid"><div class="card"><div class="card-head"><h3>تقدم الدورات حسب القسم</h3></div><div class="chart">${[64,78,58,86,72,69].map((v,i)=>`<div class="bar"><b>${v}%</b><i style="height:${v}%"></i><small>${["الهندسة","العمليات","الصيانة","الجودة","الموارد البشرية","المبيعات"][i]}</small></div>`).join("")}</div></div>
+ <div class="card"><div class="card-head"><h3>توزيع الدورات حسب المجال</h3></div><div class="ring"></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12px"><span>● الذكاء الاصطناعي 35%</span><span>● السلامة 23%</span><span>● القيادة 20%</span><span>● أخرى 22%</span></div></div></section>`;
 }
 
-
-/* =========================================================
-   COMPONENTS
-========================================================= */
-
-function kpi(icon,num,label){
-
-  return `
-
-  <div class="kpi">
-
-    <div class="kpi-icon">
-      ${icon}
-    </div>
-
-    <div class="kpi-number">
-      ${num}
-    </div>
-
-    <div class="kpi-label">
-      ${label}
-    </div>
-
-  </div>
-
-  `;
-
+function employeesPage(m){
+ m.innerHTML=head("الموظفون","إدارة ملفات الموظفين والتقدم التدريبي","<button class='btn red' onclick='showToast(\"يمكن ربط إضافة الموظفين مع Google Sheets\")'>+ إضافة موظف</button>")+
+ `<div class="table-card"><div class="table-tools"><input id="empSearch" placeholder="بحث بالاسم أو الرقم أو القسم..." oninput="renderEmpRows()"><select id="empDept" onchange="renderEmpRows()"><option value="">كل الأقسام</option>${deps.map(d=>`<option>${d}</option>`).join("")}</select></div><table><thead><tr><th>الرقم الوظيفي</th><th>الاسم</th><th>القسم</th><th>الدور</th><th>التقدم</th><th>ساعات التدريب</th><th>الحالة</th></tr></thead><tbody id="empRows"></tbody></table></div>`;
+ renderEmpRows();
+}
+function renderEmpRows(){
+ const box=el("empRows"); if(!box)return;const q=(el("empSearch")?.value||"").trim(),d=el("empDept")?.value||"";
+ box.innerHTML=employees.filter(e=>(!q||(`${e.id} ${e.name} ${e.dept}`).includes(q))&&(!d||e.dept===d)).map(e=>`<tr><td>${e.id}</td><td><b>${e.name}</b></td><td>${e.dept}</td><td>${roleAr(e.role)}</td><td><div style="width:120px;background:#edf0f2;border-radius:7px;height:8px"><i style="display:block;height:100%;width:${e.progress}%;background:var(--red);border-radius:7px"></i></div><small>${e.progress}%</small></td><td>${e.hours}</td><td><span class="pill ok">${e.status}</span></td></tr>`).join("");
 }
 
-
-function course(img,title,level){
-
-  return `
-
-  <div class="course">
-
-    <img
-      src="${img}"
-      alt=""
-    >
-
-    <div>
-
-      <b>
-        ${title}
-      </b>
-
-      <small>
-        ${level}
-      </small>
-
-    </div>
-
-  </div>
-
-  `;
-
+function trainersPage(m){
+ const ts=employees.filter(e=>e.role==="Trainer");
+ m.innerHTML=head("المدربون","إدارة المدربين الداخليين والخارجيين","<button class='btn red' onclick='showToast(\"تم فتح نموذج إضافة مدرب\")'>+ إضافة مدرب</button>")+
+ `<section class="course-grid">${ts.map((t,i)=>`<article class="card" style="text-align:center"><img src="assets/avatar.jpg" style="width:76px;height:76px;border-radius:50%;object-fit:cover"><h3>${t.name}</h3><p style="color:var(--muted);font-size:12px">${t.dept}</p><span class="pill ok">مدرب معتمد</span><p>⭐ 4.${7+i%3} · ${12+i*3} جلسة</p><button class="btn">عرض الملف</button></article>`).join("")}</section>`;
 }
 
-
-function session(day,month,title){
-
-  return `
-
-  <div class="session">
-
-    <div class="session-date">
-
-      <strong>
-        ${day}
-      </strong>
-
-      ${month}
-
-    </div>
-
-    <div>
-
-      <b>
-        ${title}
-      </b>
-
-      <br>
-
-      <small>
-        10:00 صباحاً
-      </small>
-
-    </div>
-
-  </div>
-
-  `;
-
+function aiPage(m){
+ m.innerHTML=head("الذكاء الاصطناعي للتعلم والتطوير","توصيات تدريبية ذكية للموظف والمدير","<button class='btn red' onclick='openAI()'>فتح المساعد ✦</button>")+
+ `<section class="kpis">${kpi("✦",7,"توصيات جديدة","+3")}${kpi("🎯",5,"فجوات مهارية محددة","+2")}${kpi("📚",3,"دورات مقترحة","+1")}${kpi("📈","76%","جاهزية التطوير","+8%")}</section>
+ <section class="grid3"><div class="card"><div class="card-head"><h3>أفضل دورات مقترحة لك</h3></div>${courses.slice(0,3).map(courseMini).join("")}</div><div class="card"><h3>فجواتك المهارية</h3><p>تحليل البيانات <span class="pill danger">أولوية عالية</span></p><p>القيادة <span class="pill pending">متوسطة</span></p><p>الذكاء الاصطناعي <span class="pill danger">أولوية عالية</span></p></div><div class="card"><h3>خطة 30 / 60 / 90 يوم</h3><p><b>30 يوم:</b> إكمال دورة AI الأساسية.</p><p><b>60 يوم:</b> تطبيق مشروع عملي داخل القسم.</p><p><b>90 يوم:</b> تقييم الأثر وتحديث خطة التطوير.</p></div></section>`;
 }
 
-
-function path(img,title){
-
-  return `
-
-  <div class="path">
-
-    <img
-      src="${img}"
-      alt=""
-    >
-
-    <b>
-      ${title}
-    </b>
-
-  </div>
-
-  `;
-
+function settingsPage(m){
+ m.innerHTML=head("الإعدادات","إعدادات المنصة والتكاملات","")+
+ `<div class="form-card"><div class="form-grid"><div><label>اسم المنصة</label><input value="منصة بحرة إلكتريك لتطوير الموظفين"></div><div><label>اللغة الافتراضية</label><select><option>العربية</option><option>English</option></select></div><div><label>Google Apps Script</label><input value="${CONFIG.APPS_SCRIPT_URL}"></div><div><label>حالة الربط</label><input value="${CONFIG.USE_BACKEND?"مفعّل":"غير مفعّل"}" disabled></div><div class="wide"><label>رسالة الترحيب</label><textarea>معاً نطوّر قدراتنا لنصنع مستقبلاً أفضل.</textarea></div></div><div style="margin-top:14px"><button class="btn red" onclick="showToast('تم حفظ الإعدادات')">حفظ التغييرات</button></div></div>`;
 }
 
-
-/* =========================================================
-   COURSES
-========================================================= */
-
-function renderCourses(){
-
-  const main =
-    document.getElementById(
-      "mainContent"
-    );
-
-
-  main.innerHTML = `
-
-  <div class="page-title">
-
-    <h1>
-      الدورات التدريبية
-    </h1>
-
-    <p>
-      استكشف البرامج والدورات التدريبية
-    </p>
-
-  </div>
-
-
-  <section
-    class="paths"
-    style="
-      grid-template-columns:
-      repeat(3,1fr)
-    "
-  >
-
-    ${path(
-      "assets/course1.jpg",
-      "السلامة والصحة المهنية"
-    )}
-
-    ${path(
-      "assets/course2.jpg",
-      "الأنظمة الكهربائية"
-    )}
-
-    ${path(
-      "assets/course3.jpg",
-      "القيادة والتطوير الإداري"
-    )}
-
-  </section>
-
-  `;
-
+function openAI(){el("aiBox").classList.remove("hidden");if(!el("chat").innerHTML) addMsg("bot","مرحباً 👋 أنا مساعد بحرة الذكي. أستطيع اقتراح دورات، تحليل احتياجاتك التدريبية، متابعة طلباتك وإنشاء خطة تطوير لك.")}
+function addMsg(who,text){el("chat").insertAdjacentHTML("beforeend",`<div class="msg ${who}">${text}</div>`);el("chat").scrollTop=el("chat").scrollHeight}
+async function sendAI(){
+ const q=el("aiInput").value.trim();if(!q)return;addMsg("me",q);el("aiInput").value="";
+ if(CONFIG.USE_BACKEND){
+   try{const r=await fetch(`${CONFIG.APPS_SCRIPT_URL}?action=ask&q=${encodeURIComponent(q)}`);const j=await r.json();if(j?.answer){addMsg("bot",j.answer);return}}catch(e){}
+ }
+ let a="أقدر أساعدك في الدورات، الطلبات، الشهادات، الاختبارات وخطة التطوير.";
+ if(/ذكاء|AI/i.test(q)) a="أقترح البدء بـ «مقدمة في الذكاء الاصطناعي»، ثم «تطبيقات الذكاء الاصطناعي في الموارد البشرية»، وبعدها مشروع عملي لمدة 30 يوماً.";
+ else if(/دورة|دورات/.test(q)) a="بناءً على تقدمك الحالي، أفضل 3 دورات لك: مقدمة في الذكاء الاصطناعي، تحليل البيانات وصنع القرار، ومهارات القيادة الحديثة.";
+ else if(/طلب/.test(q)) a=`لديك ${requests.filter(r=>r.emp===USER?.id).length} طلب تدريب مسجل حالياً.`;
+ else if(/شهاد/.test(q)) a=`يوجد ${certificates.filter(c=>c.emp===USER?.id).length} شهادة مرتبطة بحسابك في البيانات الحالية.`;
+ addMsg("bot",a);
 }
-
-
-/* =========================================================
-   EMPLOYEES
-========================================================= */
-
-function renderEmployees(){
-
-  const main =
-    document.getElementById(
-      "mainContent"
-    );
-
-
-  main.innerHTML = `
-
-  <div class="page-title">
-
-    <h1>
-      الموظفون
-    </h1>
-
-    <p>
-      إدارة ومتابعة الموظفين المسجلين
-    </p>
-
-  </div>
-
-
-  <div class="table-card">
-
-    <table>
-
-      <thead>
-
-        <tr>
-
-          <th>
-            الرقم الوظيفي
-          </th>
-
-          <th>
-            الاسم
-          </th>
-
-          <th>
-            القسم
-          </th>
-
-          <th>
-            الصلاحية
-          </th>
-
-          <th>
-            الحالة
-          </th>
-
-        </tr>
-
-      </thead>
-
-      <tbody>
-
-        ${employeeRow(
-          "BE-1001",
-          "مدير النظام",
-          "الموارد البشرية",
-          "Admin"
-        )}
-
-        ${employeeRow(
-          "BE-1002",
-          "سلطان الشمري",
-          "الموارد البشرية",
-          "Trainer"
-        )}
-
-        ${employeeRow(
-          "BE-1003",
-          "إبراهيم الشهري",
-          "الجودة",
-          "Employee"
-        )}
-
-      </tbody>
-
-    </table>
-
-  </div>
-
-  `;
-
-}
-
-
-function employeeRow(
-  id,
-  name,
-  dep,
-  role
-){
-
-  return `
-
-  <tr>
-
-    <td>
-      ${id}
-    </td>
-
-    <td>
-      ${name}
-    </td>
-
-    <td>
-      ${dep}
-    </td>
-
-    <td>
-      ${roleArabic(role)}
-    </td>
-
-    <td>
-      <span class="badge">
-        نشط
-      </span>
-    </td>
-
-  </tr>
-
-  `;
-
-}
-
-
-/* =========================================================
-   SESSIONS
-========================================================= */
-
-function renderSessions(){
-
-  document
-    .getElementById(
-      "mainContent"
-    )
-    .innerHTML = `
-
-    <div class="page-title">
-
-      <h1>
-        الجلسات التدريبية
-      </h1>
-
-      <p>
-        مواعيد الجلسات القادمة
-      </p>
-
-    </div>
-
-
-    <div class="card">
-
-      ${session(
-        "12",
-        "سبتمبر",
-        "السلامة الصناعية"
-      )}
-
-      ${session(
-        "18",
-        "سبتمبر",
-        "مهارات القيادة"
-      )}
-
-      ${session(
-        "25",
-        "سبتمبر",
-        "الأنظمة الكهربائية"
-      )}
-
-    </div>
-
-  `;
-
-}
-
-
-/* =========================================================
-   CERTIFICATES
-========================================================= */
-
-function renderCertificates(){
-
-  document
-    .getElementById(
-      "mainContent"
-    )
-    .innerHTML = `
-
-    <div class="page-title">
-
-      <h1>
-        الشهادات
-      </h1>
-
-      <p>
-        الشهادات التدريبية الصادرة
-      </p>
-
-    </div>
-
-
-    <section class="kpis">
-
-      ${kpi(
-        "🏆",
-        "38",
-        "إجمالي الشهادات"
-      )}
-
-      ${kpi(
-        "✅",
-        "32",
-        "شهادة مكتملة"
-      )}
-
-      ${kpi(
-        "⏳",
-        "6",
-        "قيد الإصدار"
-      )}
-
-      ${kpi(
-        "📈",
-        "84%",
-        "معدل الإنجاز"
-      )}
-
-    </section>
-
-  `;
-
-}
-
-
-/* =========================================================
-   REPORTS
-========================================================= */
-
-function renderReports(){
-
-  document
-    .getElementById(
-      "mainContent"
-    )
-    .innerHTML = `
-
-    <div class="page-title">
-
-      <h1>
-        التقارير
-      </h1>
-
-      <p>
-        مؤشرات التدريب والتطوير
-      </p>
-
-    </div>
-
-
-    <section class="kpis">
-
-      ${kpi(
-        "👥",
-        "50",
-        "موظف"
-      )}
-
-      ${kpi(
-        "🎓",
-        "12",
-        "دورة"
-      )}
-
-      ${kpi(
-        "🏆",
-        "38",
-        "شهادة"
-      )}
-
-      ${kpi(
-        "⏱️",
-        "640",
-        "ساعة تدريب"
-      )}
-
-    </section>
-
-  `;
-
-}
-
-
-/* =========================================================
-   LOGOUT
-========================================================= */
-
-function logout(){
-
-  currentUser = null;
-
-
-  document
-    .getElementById("app")
-    .classList
-    .add("hidden");
-
-
-  document
-    .getElementById(
-      "loginPage"
-    )
-    .classList
-    .remove("hidden");
-
-
-  document
-    .getElementById("pin")
-    .value = "";
-
-}
-
-
-/* =========================================================
-   ENTER KEY
-========================================================= */
-
-document
-  .getElementById("pin")
-  .addEventListener(
-    "keydown",
-    function(event){
-
-      if(event.key === "Enter"){
-
-        login();
-
-      }
-
-    }
-  );
-
-
-console.log(
-  "Bahra Electric Platform loaded successfully"
-);
-
+el("aiFab").onclick=openAI;el("aiClose").onclick=()=>el("aiBox").classList.add("hidden");el("aiSend").onclick=sendAI;el("aiInput").addEventListener("keydown",e=>{if(e.key==="Enter")sendAI()});
+el("modalWrap").addEventListener("click",e=>{if(e.target===el("modalWrap"))closeModal()});
+el("globalSearch").addEventListener("keydown",e=>{if(e.key==="Enter"){render("courses");setTimeout(()=>{const q=e.target.value.trim();document.querySelectorAll(".course-card").forEach(card=>card.style.display=!q||card.textContent.includes(q)?"":"none")},50)}});
+el("themeBtn").onclick=()=>{document.body.style.filter=document.body.style.filter?"":"contrast(.98) saturate(.96)";showToast("تم تبديل وضع العرض")};
+el("langBtn").onclick=()=>showToast("واجهة English جاهزة للربط في النسخة ثنائية اللغة");
 </script>
-
 </body>
 </html>
