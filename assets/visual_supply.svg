@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360">
+<defs>
+ <linearGradient id="g" x1="0" x2="1"><stop stop-color="#081018"/><stop offset=".58" stop-color="#111d27"/><stop offset="1" stop-color="#251016"/></linearGradient>
+ <linearGradient id="r" x1="0" x2="1"><stop stop-color="#e11b22"/><stop offset="1" stop-color="#a80f15"/></linearGradient>
+ <filter id="s"><feDropShadow dx="0" dy="14" stdDeviation="18" flood-opacity=".25"/></filter>
+</defs>
+<rect width="1200" height="360" rx="28" fill="url(#g)"/>
+<path d="M0 290 C260 220 360 365 640 285 C860 225 1010 300 1200 205 V360 H0Z" fill="#e11b22" opacity=".10"/>
+<path d="M0 320 C280 260 470 365 730 305 C950 255 1060 290 1200 245 V360 H0Z" fill="#e11b22" opacity=".12"/>
+<circle cx="855" cy="205" r="18" fill="white" opacity="0.025"/><circle cx="946" cy="52" r="29" fill="white" opacity="0.037000000000000005"/><circle cx="1037" cy="119" r="40" fill="white" opacity="0.049"/><circle cx="768" cy="186" r="51" fill="white" opacity="0.061000000000000006"/><circle cx="859" cy="253" r="62" fill="white" opacity="0.07300000000000001"/>
+<rect x="738" y="42" width="360" height="276" rx="34" fill="#ffffff" opacity=".045" stroke="#ffffff" stroke-opacity=".09"/>
+<g transform="translate(753,48) scale(.82)" filter="url(#s)"><rect fill="none" stroke="white" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" x="65" y="110" width="80" height="70"/><rect fill="none" stroke="white" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" x="150" y="75" width="80" height="105"/><rect fill="none" stroke="white" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" x="235" y="125" width="70" height="55"/><path fill="none" stroke="white" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" d="M105 205h165M105 205l-25 25M270 205l25 25"/></g>
+<rect x="70" y="76" width="72" height="7" rx="4" fill="url(#r)"/>
+<text x="70" y="145" fill="white" font-family="Arial,Tahoma,sans-serif" font-size="42" font-weight="700">سلسلة الإمداد</text>
+<text x="70" y="188" fill="#ff3037" font-family="Arial,sans-serif" font-size="18" font-weight="700" letter-spacing="2">SUPPLY CHAIN</text>
+<text x="70" y="244" fill="#cbd3d9" font-family="Arial,Tahoma,sans-serif" font-size="17">Bahra Electric • Employee Development Platform</text>
+</svg>
