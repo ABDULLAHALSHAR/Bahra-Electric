@@ -3,94 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>منصة بحرة إلكتريك للتدريب والتطوير</title>
+<title>Bahra Electric Test</title>
 <style>
-:root{
-  --red:#E11B22; --red-2:#B3141A; --red-soft:#FCE9EA;
-  --ink:#1A1D21; --muted:#8A9099; --bg:#F4F5F7; --card:#FFFFFF;
-  --sidebar:#111214; --sidebar-2:#17181B; --line:#E6E8EC; --green:#12B76A;
-  --radius:14px; --shadow:0 8px 24px rgba(20,23,28,.06); --shadow-2:0 12px 32px rgba(20,23,28,.10);
-  --sans:"Segoe UI",Tahoma,"Geeza Pro",Arial,"Helvetica Neue",sans-serif;
+body{
+  margin:0;
+  font-family:Arial;
+  background:#111;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:100vh;
 }
-body.dark{
-  --ink:#EDEFF2; --muted:#9AA0A8; --bg:#0E0F11; --card:#17181B; --line:#26282D;
-  --red-soft:#2a1416; --shadow:0 8px 24px rgba(0,0,0,.4); --shadow-2:0 12px 32px rgba(0,0,0,.5);
+.box{
+  text-align:center;
 }
-*{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%}
-body{font-family:var(--sans);background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.6}
-button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
-input{font-family:inherit}
-a{color:inherit;text-decoration:none}
-.hidden{display:none!important}
-::-webkit-scrollbar{width:10px;height:10px}
-::-webkit-scrollbar-thumb{background:#c9cdd3;border-radius:8px}
-body.dark ::-webkit-scrollbar-thumb{background:#33363c}
-
-/* ============ LOGO ============ */
-.logo{display:flex;align-items:center;gap:10px}
-.logo .mark{width:44px;height:44px;flex:none;position:relative;border-radius:50%;
-  box-shadow:0 5px 14px rgba(225,27,34,.35)}
-.logo .mark>svg{width:100%;height:100%;display:block}
-.logo .mark>img.mark-real{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
-.logo .word{display:flex;flex-direction:column;line-height:1}
-.logo .word b{font-size:19px;font-weight:900;letter-spacing:.5px;font-family:Arial,sans-serif;color:#1A1D21}
-.logo .word b span{color:var(--red)}
-.logo .word small{font-size:8px;letter-spacing:1.4px;color:var(--muted);margin-top:2px;font-family:Arial,sans-serif}
-.logo.on-dark .word b{color:#fff}
-.logo.on-dark .word b{color:#fff}
-
-/* ============ LOGIN ============ */
-#login{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
-  padding:26px;overflow:auto;background:#12232e}
-.login-scene{position:absolute;inset:0;overflow:hidden}
-.login-scene .sky{position:absolute;inset:0;
-  background:linear-gradient(180deg,#7fb0d6 0%,#c9d7dc 30%,#f0c9a0 60%,#e88a4e 82%,#b8532a 100%)}
-.login-scene .sun{position:absolute;left:16%;top:46%;width:260px;height:260px;border-radius:50%;
-  background:radial-gradient(circle,rgba(255,244,214,.98),rgba(255,196,120,.55) 42%,transparent 72%);filter:blur(1px)}
-.login-scene .ground{position:absolute;left:0;right:0;bottom:0;height:40%;
-  background:linear-gradient(180deg,rgba(30,20,16,.15),#150e0b 88%)}
-.login-scene svg.scene-art{position:absolute;left:0;right:0;bottom:0;width:100%;height:78%}
-.login-scene .scene-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
-.ribbon{position:absolute;width:340px;height:60px;background:linear-gradient(90deg,var(--red),var(--red-2));
-  transform:rotate(-45deg);opacity:.95;box-shadow:0 6px 20px rgba(0,0,0,.3);z-index:3}
-.ribbon.tl{top:-8px;left:-120px}
-.ribbon.tl.b{top:26px;left:-150px;height:26px;opacity:.6}
-.ribbon.br{bottom:-8px;right:-120px}
-.ribbon.br.b{bottom:26px;right:-150px;height:26px;opacity:.6}
-.login-card{position:relative;z-index:2;width:min(1120px,100%);min-height:600px;display:flex;
-  border-radius:22px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.45);backdrop-filter:blur(2px)}
-.login-left{flex:1.15;padding:52px 46px;color:#fff;
-  background:linear-gradient(135deg,rgba(18,30,40,.62),rgba(18,30,40,.32));position:relative}
-.login-left .logo{margin-bottom:26px}
-.login-left h1{font-size:40px;font-weight:900;line-height:1.15;margin-bottom:6px}
-.login-left h1 span{display:block}
-.login-left h1 .r{color:var(--red)}
-.login-left .en-sub{font-size:15px;opacity:.85;letter-spacing:.3px;margin-bottom:18px;font-family:Arial}
-.login-left .rule{width:70px;height:4px;background:var(--red);border-radius:3px;margin-bottom:18px}
-.login-left p.lead{font-size:15px;opacity:.9;max-width:44ch;margin-bottom:34px}
-.feat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;max-width:560px}
-.feat{background:rgba(20,15,15,.42);border:1px solid rgba(255,255,255,.12);border-radius:14px;
-  padding:16px 10px;text-align:center;transition:.2s}
-.feat:hover{background:rgba(225,27,34,.22);transform:translateY(-3px)}
-.feat .ic{width:44px;height:44px;border-radius:11px;background:var(--red);display:grid;place-items:center;
-  margin:0 auto 10px}
-.feat .ic svg{width:22px;height:22px;color:#fff}
-.feat span{font-size:12.5px;font-weight:600}
-.login-right{flex:.85;background:var(--card);padding:44px 44px 30px;display:flex;flex-direction:column}
-.lang-pill{align-self:flex-start;margin-inline-start:auto;display:flex;align-items:center;gap:7px;
-  border:1px solid var(--line);border-radius:10px;padding:8px 12px;font-size:13px;font-weight:600}
-.lang-pill svg{width:15px;height:15px;color:var(--muted)}
-.login-right .logo{margin:8px 0 26px}
-.login-right h2{font-size:30px;font-weight:900;margin-bottom:6px}
-.login-right .sub{color:var(--muted);margin-bottom:26px}
-.field{margin-bottom:18px}
-.field label{display:block;font-weight:700;font-size:13.5px;margin-bottom:8px}
-.input-wrap{position:relative}
-.input-wrap svg.lead{position:absolute;inset-inline-start:14px;top:50%;transform:translateY(-50%);
-  width:18px;height:18px;color:var(--muted)}
-.input-wrap input{width:100%;height:52px;border:1.5px solid var(--line);border-radius:12px;background:var(--bg);
-  padding-inline-start:44px;padding-inline-end:44px;font-size:15px;color:var(--ink);transition:.15s}
-.input-wrap input:focus{outline:none;border-color:var(--red);background:var(--card);box-shadow:0 0 0 4px var(--red-soft)}
-.input-wrap .eye{position:absolute;inset-inline-end:14px;top:50%;transform:translateY(-50%);color:var(--muted)}
-.input-wrap .eye svg{width:18px;height:18px}
+h1{color:#e11b22;font-size:44px}
+</style>
+</head>
+<body>
+<div class="box">
+  <h1>Bahra Electric</h1>
+  <p>الموقع يعمل بنجاح ✅</p>
+</div>
+</body>
+</html>
