@@ -4,841 +4,948 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>
-منصة بحرة إلكتريك لتطوير الموظفين | Bahra Electric Employee Development Platform
-</title>
-
-<meta name="theme-color" content="#07386c">
+<title>منصة بحرة إلكتريك لتطوير الموظفين</title>
 
 <style>
-:root{
-    --primary:#07386c;
-    --secondary:#0ca7a5;
-    --accent:#d71920;
-    --bg:#f5f8fc;
-    --white:#ffffff;
-    --text:#0c1b3a;
-    --muted:#6b7a95;
-    --border:#e5ebf3;
-    --shadow:0 12px 35px rgba(7,56,108,.10);
-}
 
 *{
     box-sizing:border-box;
-    margin:0;
-    padding:0;
-    font-family:"Segoe UI","Tahoma","Arial",sans-serif;
+    font-family:"Cairo",Tahoma,Arial;
 }
 
 body{
-    background:var(--bg);
-    color:var(--text);
+    margin:0;
+    background:#f5f8fc;
+    color:#10243e;
 }
 
-button,
-input{
-    font-family:inherit;
-}
-
-.hidden{
-    display:none!important;
-}
-
-
-/* =========================
-   Login Screen
-========================= */
+/* LOGIN PAGE */
 
 .login-page{
     min-height:100vh;
+    background:
+    linear-gradient(
+    rgba(0,0,0,.35),
+    rgba(0,0,0,.35)),
+    url("bahra-bg.jpg");
+
+    background-size:cover;
+    background-position:center;
+
     display:flex;
-    justify-content:center;
     align-items:center;
-    background:#f4f7fb;
-    padding:25px;
+    justify-content:center;
 }
 
-.login-shell{
-    width:min(1200px,100%);
-    min-height:650px;
-    background:#fff;
+
+.login-box{
+    width:90%;
+    max-width:1250px;
+    background:white;
     border-radius:25px;
     overflow:hidden;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    box-shadow:var(--shadow);
+    display:flex;
+    flex-direction:row-reverse;
+    box-shadow:0 20px 50px #0005;
 }
 
 
-.login-form{
-    padding:55px;
+/* LEFT IMAGE */
+
+.login-image{
+
+    width:65%;
+    min-height:650px;
+
+    background:
+    linear-gradient(
+    rgba(255,255,255,.05),
+    rgba(0,0,0,.1)),
+    url("bahra-login.jpg");
+
+    background-size:cover;
+    background-position:center;
+
+    padding:60px;
+
     display:flex;
     flex-direction:column;
     justify-content:center;
+    color:white;
 }
 
 
-.logo img{
-    width:180px;
-    margin-bottom:30px;
+.logo{
+
+width:250px;
+margin-bottom:40px;
+
 }
 
 
-.login-form h1{
-    color:var(--primary);
-    font-size:30px;
-    margin-bottom:10px;
+.login-image h1{
+
+font-size:45px;
+line-height:1.3;
+margin:0;
+
+}
+
+.login-image h1 span{
+
+color:#e21b23;
+
+}
+
+
+.login-image p{
+
+font-size:22px;
+max-width:400px;
+
+}
+
+
+.features{
+
+display:flex;
+gap:20px;
+margin-top:40px;
+
+}
+
+
+.feature{
+
+background:#0008;
+padding:20px;
+border-radius:15px;
+text-align:center;
+width:150px;
+
+}
+
+.feature i{
+
+font-size:35px;
+color:white;
+
+}
+
+
+/* LOGIN FORM */
+
+
+.login-form{
+
+width:35%;
+padding:50px;
+
+display:flex;
+flex-direction:column;
+justify-content:center;
+
+}
+
+
+.login-form img{
+
+width:220px;
+margin:auto;
+
+}
+
+
+.login-form h2{
+
+font-size:38px;
+margin-top:40px;
+
 }
 
 
 .login-form p{
-    color:var(--muted);
-    margin-bottom:30px;
+
+color:#777;
+
 }
 
 
-.field{
-    margin-bottom:18px;
-    position:relative;
+.input-box{
+
+margin-top:20px;
+
 }
 
 
-.field label{
-    display:block;
-    font-weight:700;
-    margin-bottom:8px;
+.input-box label{
+
+font-weight:bold;
+
 }
 
 
-.field input{
-    width:100%;
-    height:50px;
-    border:1px solid var(--border);
-    border-radius:12px;
-    padding:0 45px 0 15px;
-    font-size:15px;
-}
+.input-box input{
 
+width:100%;
+padding:18px;
+border-radius:12px;
+border:1px solid #ddd;
+font-size:18px;
+margin-top:8px;
 
-.field input:focus{
-    outline:none;
-    border-color:var(--secondary);
-}
-
-
-.field-icon{
-    position:absolute;
-    right:15px;
-    bottom:14px;
-    color:var(--primary);
 }
 
 
 .login-btn{
-    width:100%;
-    height:52px;
-    border:0;
-    border-radius:12px;
-    background:linear-gradient(
-        135deg,
-        var(--primary),
-        var(--secondary)
-    );
-    color:#fff;
-    font-size:16px;
-    font-weight:700;
-    cursor:pointer;
+
+margin-top:30px;
+background:#e30613;
+color:white;
+border:none;
+padding:18px;
+border-radius:12px;
+font-size:20px;
+cursor:pointer;
+
 }
 
 
-/* الجانب التعريفي */
+.login-btn:hover{
 
-.login-art{
-    background:
-    linear-gradient(
-        rgba(7,56,108,.85),
-        rgba(12,167,165,.85)
-    ),
-    url("IMAGE_LOGIN_BACKGROUND")
-    center/cover;
+background:#c4000b;
 
-    color:white;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:50px;
 }
 
 
-.login-art img{
-    width:170px;
-    background:#fff;
-    border-radius:18px;
-    padding:10px;
+
+.remember{
+
+display:flex;
+justify-content:space-between;
+margin-top:20px;
+
 }
 
 
-.login-art h2{
-    margin-top:25px;
-    font-size:28px;
+.help{
+
+margin-top:30px;
+text-align:center;
+color:#555;
+
 }
 
 
-.login-art p{
-    margin-top:15px;
-    line-height:1.8;
+
+/* DASHBOARD */
+
+.dashboard{
+
+display:none;
+min-height:100vh;
+
 }
 
 
-/* نهاية الجزء الأول */
-</style>
-</head>
-<style>
-
-/* =========================
-   Platform Layout
-========================= */
-
-.app{
-    min-height:100vh;
-    display:flex;
-}
-
+/* SIDEBAR */
 
 .sidebar{
-    width:240px;
-    position:fixed;
-    right:0;
-    top:0;
-    bottom:0;
-    background:
-    linear-gradient(
-        180deg,
-        #07386c,
-        #041d38
-    );
-    color:white;
-    padding:20px 15px;
+
+position:fixed;
+right:0;
+top:0;
+
+width:270px;
+height:100vh;
+
+background:#061b35;
+color:white;
+
+padding:25px;
+
 }
 
 
-.sidebar-logo{
-    text-align:center;
-    padding-bottom:20px;
-    border-bottom:1px solid rgba(255,255,255,.2);
+.sidebar img{
+
+width:170px;
+
 }
 
 
-.sidebar-logo img{
-    width:90px;
+.menu{
+
+margin-top:40px;
+
 }
 
 
-.sidebar-menu{
-    margin-top:25px;
+.menu div{
+
+padding:18px;
+border-radius:10px;
+margin-bottom:10px;
+cursor:pointer;
+
 }
 
 
-.sidebar-menu button{
-    width:100%;
-    background:none;
-    border:0;
-    color:white;
-    padding:14px;
-    text-align:right;
-    border-radius:12px;
-    margin-bottom:8px;
-    cursor:pointer;
-    font-size:15px;
+.menu div:hover,
+.active{
+
+background:#e30613;
+
 }
 
 
-.sidebar-menu button:hover,
-.sidebar-menu button.active{
-    background:#0ca7a5;
-}
-
-
-
-/* المحتوى */
-
-.workspace{
-    margin-right:240px;
-    width:calc(100% - 240px);
-}
-
-
-
-.topbar{
-    height:80px;
-    background:#fff;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 35px;
-    border-bottom:1px solid var(--border);
-}
-
-
-.top-logo img{
-    width:160px;
-}
-
-
-.user-box{
-    display:flex;
-    align-items:center;
-    gap:15px;
-}
-
-
-.avatar{
-    width:45px;
-    height:45px;
-    border-radius:50%;
-    background:#0ca7a5;
-    color:white;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-weight:bold;
-}
-
-
+/* CONTENT */
 
 .content{
-    padding:30px;
-}
 
-
-
-/* =========================
- Welcome Banner
-========================= */
-
-.welcome-card{
-
-    background:
-    linear-gradient(
-        120deg,
-        #ffffff,
-        #eef8ff
-    );
-
-    border-radius:20px;
-    border:1px solid var(--border);
-    overflow:hidden;
-    box-shadow:var(--shadow);
-}
-
-
-.welcome-card img{
-    width:100%;
-    display:block;
-}
-
-
-
-
-/* =========================
- KPI Cards
-========================= */
-
-
-.kpis{
-
-    display:grid;
-    grid-template-columns:
-    repeat(4,1fr);
-
-    gap:20px;
-    margin-top:25px;
+margin-right:270px;
+padding:25px;
 
 }
 
-
-.kpi{
-
-    background:white;
-    border-radius:18px;
-    padding:25px;
-    border:1px solid var(--border);
-    box-shadow:var(--shadow);
-
-}
-
-
-.kpi-number{
-
-    font-size:32px;
-    font-weight:800;
-    color:var(--primary);
-
-}
-
-
-.kpi-title{
-
-    margin-top:8px;
-    color:var(--muted);
-
-}
-
-
-
-
-/* =========================
- Courses
-========================= */
-
-
-.section-title{
-
-    margin:35px 0 20px;
-    color:var(--primary);
-
-}
-
-
-.course-grid{
-
-    display:grid;
-    grid-template-columns:
-    repeat(3,1fr);
-
-    gap:20px;
-
-}
-
-
-.course-card{
-
-    background:white;
-    border-radius:18px;
-    overflow:hidden;
-    border:1px solid var(--border);
-    box-shadow:var(--shadow);
-
-}
-
-
-.course-image{
-
-    height:150px;
-    background:
-    linear-gradient(
-        135deg,
-        #07386c,
-        #0ca7a5
-    );
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:white;
-    font-size:45px;
-
-}
-
-
-.course-body{
-
-    padding:20px;
-
-}
-
-
-.course-body h3{
-
-    color:var(--primary);
-    margin-bottom:10px;
-
-}
-
-
-.course-body p{
-
-    color:var(--muted);
-    line-height:1.7;
-
-}
-
-
-.course-btn{
-
-    margin-top:15px;
-    width:100%;
-    border:0;
-    padding:12px;
-    border-radius:10px;
-    background:var(--primary);
-    color:white;
-    cursor:pointer;
-
-}
-
-
-
-
-
-/* =========================
- Certificates
-========================= */
-
-
-.certificate{
-
-    background:white;
-    padding:35px;
-    border-radius:18px;
-    border:2px solid var(--primary);
-    text-align:center;
-    margin-top:25px;
-
-}
-
-
-.certificate h2{
-
-    color:var(--primary);
-
-}
-
-
-.certificate-name{
-
-    font-size:25px;
-    font-weight:bold;
-    color:#d71920;
-    margin:20px;
-
-}
-
-
-
-/* =========================
- Reports
-========================= */
-
-
-.report-box{
-
-    background:white;
-    border-radius:18px;
-    padding:25px;
-    border:1px solid var(--border);
-    margin-top:25px;
-
-}
-
-
-.progress{
-
-    height:10px;
-    background:#e5ebf3;
-    border-radius:10px;
-    overflow:hidden;
-
-}
-
-
-.progress span{
-
-    display:block;
-    height:100%;
-    width:75%;
-    background:#0ca7a5;
-
-}
-
-
-
-@media(max-width:900px){
-
-.sidebar{
-
-    width:80px;
-
-}
-
-
-.workspace{
-
-    margin-right:80px;
-    width:calc(100% - 80px);
-
-}
-
-
-.kpis{
-
-    grid-template-columns:1fr 1fr;
-
-}
-
-
-.course-grid{
-
-    grid-template-columns:1fr;
-
-}
-
-}
 
 
 </style>
+
+</head>
 
 
 <body>
 
 
-<!-- Dashboard سيتم حقنه بعد تسجيل الدخول -->
+<!-- LOGIN -->
 
-<div id="app">
+<div class="login-page" id="loginPage">
 
+
+<div class="login-box">
+
+
+<div class="login-image">
+
+<img class="logo" src="bahra-logo.png">
+
+
+<h1>
+منصة بحرة إلكتريك<br>
+<span>لتطوير الموظفين</span>
+</h1>
+
+
+<p>
+نستثمر في تطوير موظفينا
+لبناء مستقبل أكثر إشراقاً
+</p>
+
+
+<div class="features">
+
+
+<div class="feature">
+👥
+<br>
+تطوير المهارات
+</div>
+
+
+<div class="feature">
+📚
+<br>
+إدارة الدورات
+</div>
+
+
+<div class="feature">
+📊
+<br>
+قياس التقدم
+</div>
+
+
+<div class="feature">
+🏆
+<br>
+فرص التطوير
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+<div class="login-form">
+
+
+<img src="bahra-logo.png">
+
+
+<h2>
+تسجيل الدخول
+</h2>
+
+
+<p>
+استخدم رقمك الوظيفي للدخول إلى حسابك
+</p>
+
+
+
+<div class="input-box">
+
+<label>
+الرقم الوظيفي
+</label>
+
+<input 
+id="employeeID"
+placeholder="أدخل الرقم الوظيفي">
+
+</div>
+
+
+
+<div class="input-box">
+
+<label>
+PIN
+</label>
+
+<input 
+type="password"
+id="pin"
+placeholder="أدخل رمز PIN">
+
+</div>
+
+
+
+<div class="remember">
+
+<span>
+نسيت رمز PIN؟
+</span>
+
+
+<label>
+<input type="checkbox">
+ تذكرني
+</label>
+
+
+</div>
+
+
+
+<button class="login-btn" onclick="login()">
+
+دخول إلى المنصة
+
+</button>
+
+
+
+<div class="help">
+
+في حال وجود مشكلة في تسجيل الدخول
+<br>
+يرجى التواصل مع قسم الموارد البشرية
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+</div>
+<!-- ================= DASHBOARD ================= -->
+
+<div class="dashboard" id="dashboard">
+
+
+<!-- SIDEBAR -->
 
 <div class="sidebar">
 
-
-<div class="sidebar-logo">
-
-<img src="BAHRA_LOGO">
-
-</div>
+<img src="bahra-logo.png">
 
 
+<div class="menu">
 
-<div class="sidebar-menu">
-
-<button class="active">
+<div class="active">
 🏠 لوحة التحكم
-</button>
-
-<button>
-📚 الدورات التدريبية
-</button>
-
-
-<button>
-📜 الشهادات
-</button>
-
-
-<button>
-📊 التقارير
-</button>
-
-
-<button>
-🤖 المساعد الذكي
-</button>
-
-
 </div>
 
-
-</div>
-
-
-
-
-<div class="workspace">
-
-
-<div class="topbar">
-
-
-<div class="top-logo">
-
-<img src="BAHRA_LOGO">
-
-</div>
-
-
-
-<div class="user-box">
 
 <div>
-<b>عبدالله الشريف</b>
-<br>
-<small>
-إدارة الموارد البشرية
-</small>
+📚 الدورات التدريبية
+</div>
+
+
+<div>
+📝 طلبات التدريب
+</div>
+
+
+<div>
+📅 الجلسات التدريبية
+</div>
+
+
+<div>
+🏆 الشهادات
+</div>
+
+
+<div>
+📊 التقارير
+</div>
+
+
+<div>
+🤖 المساعد الذكي
+</div>
+
 
 </div>
 
 
-<div class="avatar">
-ع
 </div>
 
 
-</div>
 
 
-</div>
-
-
+<!-- MAIN CONTENT -->
 
 <div class="content">
 
 
-<div class="welcome-card">
+<!-- TOP BAR -->
 
-<img src="BAHRA_HERO_IMAGE">
-
-</div>
-
-
-
-<div class="kpis">
-
-
-<div class="kpi">
-
-<div class="kpi-number">
-5
-</div>
-
-<div class="kpi-title">
-الدورات المكتملة
-</div>
-
-</div>
+<div style="
+background:white;
+padding:20px;
+border-radius:15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+box-shadow:0 5px 20px #0001;
+">
 
 
+<div>
 
-<div class="kpi">
-
-<div class="kpi-number">
-12
-</div>
-
-<div class="kpi-title">
-الساعات التدريبية
-</div>
-
-</div>
-
-
-
-<div class="kpi">
-
-<div class="kpi-number">
-85%
-</div>
-
-<div class="kpi-title">
-نسبة الإنجاز
-</div>
-
-</div>
-
-
-
-<div class="kpi">
-
-<div class="kpi-number">
-3
-</div>
-
-<div class="kpi-title">
-الشهادات
-</div>
-
-</div>
-
-
-</div>
-
-
-<h2 class="section-title">
-الدورات الحالية
+<h2 style="margin:0;color:#07386c">
+مرحباً بك في منصة بحرة إلكتريك
 </h2>
 
-
-
-<div class="course-grid">
-
-
-<div class="course-card">
-
-<div class="course-image">
-⚡
-</div>
-
-<div class="course-body">
-
-<h3>
-السلامة الكهربائية
-</h3>
-
-<p>
-برنامج تدريبي متخصص لموظفي بحرة إلكتريك.
+<p style="margin:5px 0;color:#777">
+منصة التدريب والتطوير للموظفين
 </p>
 
-<button class="course-btn">
-بدء الدورة
+
+</div>
+
+
+
+<div>
+
+<button style="
+padding:12px 20px;
+border:1px solid #ddd;
+background:white;
+border-radius:10px;
+">
+
+English
+
+</button>
+
+
+<span style="
+background:#e30613;
+color:white;
+padding:14px;
+border-radius:50%;
+margin-right:10px;
+">
+
+ع
+
+</span>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<!-- HERO -->
+
+
+<div style="
+margin-top:25px;
+background:linear-gradient(135deg,#07386c,#e30613);
+height:260px;
+border-radius:20px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:40px;
+color:white;
+overflow:hidden;
+">
+
+
+<div>
+
+
+<h1 style="font-size:35px">
+
+تطوير الموظفين
+<br>
+نحو مستقبل أفضل
+
+</h1>
+
+
+<p style="font-size:18px">
+
+تابع خطتك التدريبية،
+الدورات المتاحة والشهادات
+
+</p>
+
+
+<button style="
+background:white;
+color:#07386c;
+border:0;
+padding:15px 30px;
+border-radius:12px;
+font-weight:bold;
+">
+
+استعرض الدورات
+
 </button>
 
 
 </div>
 
+
+
+<div style="
+font-size:120px;
+">
+
+⚡
+
+</div>
+
+
 </div>
 
 
 
 
-<div class="course-card">
 
-<div class="course-image">
+<!-- KPI CARDS -->
+
+
+<div style="
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+margin-top:25px;
+">
+
+
+
+<div style="
+background:white;
+padding:25px;
+border-radius:15px;
+box-shadow:0 5px 20px #0001;
+">
+
+<h1 style="color:#07386c">
+12
+</h1>
+
+<p>
+الدورات المكتملة
+</p>
+
+</div>
+
+
+
+
+<div style="
+background:white;
+padding:25px;
+border-radius:15px;
+box-shadow:0 5px 20px #0001;
+">
+
+<h1 style="color:#e30613">
+3
+</h1>
+
+<p>
+الدورات الحالية
+</p>
+
+</div>
+
+
+
+
+<div style="
+background:white;
+padding:25px;
+border-radius:15px;
+box-shadow:0 5px 20px #0001;
+">
+
+<h1 style="color:#0ca7a5">
+48
+</h1>
+
+<p>
+الساعات التدريبية
+</p>
+
+</div>
+
+
+
+
+<div style="
+background:white;
+padding:25px;
+border-radius:15px;
+box-shadow:0 5px 20px #0001;
+">
+
+<h1 style="color:#07386c">
+95%
+</h1>
+
+<p>
+نسبة الإنجاز
+</p>
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<!-- COURSES -->
+
+
+<h2 style="
+margin-top:35px;
+color:#07386c;
+">
+
+الدورات التدريبية المقترحة
+
+</h2>
+
+
+
+<div style="
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+">
+
+
+
+<div style="
+background:white;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 5px 20px #0001;
+">
+
+<div style="
+height:130px;
+background:#07386c;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:60px;
+color:white;
+">
+
+⚙️
+
+</div>
+
+
+<div style="padding:20px">
+
+<h3>
+أساسيات السلامة الكهربائية
+</h3>
+
+
+<p>
+مدة الدورة: 8 ساعات
+</p>
+
+
+<button class="login-btn"
+style="
+padding:10px;
+font-size:14px;
+">
+
+ابدأ الدورة
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<div style="
+background:white;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 5px 20px #0001;
+">
+
+
+<div style="
+height:130px;
+background:#e30613;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:60px;
+color:white;
+">
+
+📊
+
+</div>
+
+
+
+<div style="padding:20px">
+
+
+<h3>
+تحليل البيانات للموظفين
+</h3>
+
+
+<p>
+مدة الدورة: 12 ساعة
+</p>
+
+
+<button class="login-btn"
+style="
+padding:10px;
+font-size:14px;
+">
+
+ابدأ الدورة
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<div style="
+background:white;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 5px 20px #0001;
+">
+
+
+<div style="
+height:130px;
+background:#0ca7a5;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:60px;
+color:white;
+">
+
 🤖
+
 </div>
 
-<div class="course-body">
+
+
+<div style="padding:20px">
+
 
 <h3>
 الذكاء الاصطناعي في العمل
 </h3>
 
-<p>
-استخدام أدوات الذكاء الاصطناعي لتطوير الأداء.
-</p>
-
-<button class="course-btn">
-بدء الدورة
-</button>
-
-</div>
-
-</div>
-
-
-
-
-<div class="course-card">
-
-<div class="course-image">
-📈
-</div>
-
-<div class="course-body">
-
-<h3>
-تطوير المهارات القيادية
-</h3>
 
 <p>
-برنامج تطوير القادة والموظفين.
+مدة الدورة: 10 ساعات
 </p>
 
-<button class="course-btn">
-بدء الدورة
+
+<button class="login-btn"
+style="
+padding:10px;
+font-size:14px;
+">
+
+ابدأ الدورة
+
 </button>
 
-</div>
 
 </div>
 
@@ -847,67 +954,129 @@ input{
 
 
 
-<div class="certificate">
+</div>
 
-<h2>
-شهادة إتمام برنامج تدريبي
+
+
+
+
+
+<!-- TRAINING REQUESTS -->
+
+
+<h2 style="
+margin-top:35px;
+color:#07386c;
+">
+
+طلبات التدريب الأخيرة
+
 </h2>
 
 
-<div class="certificate-name">
-عبدالله الشريف
+
+<div style="
+background:white;
+padding:20px;
+border-radius:15px;
+box-shadow:0 5px 20px #0001;
+">
+
+
+<table style="
+width:100%;
+border-collapse:collapse;
+">
+
+
+<tr style="background:#f2f5f8">
+
+<th>الدورة</th>
+<th>التاريخ</th>
+<th>الحالة</th>
+
+</tr>
+
+
+<tr>
+
+<td>
+إدارة المشاريع
+</td>
+
+<td>
+08-09-2026
+</td>
+
+
+<td style="color:green">
+مقبول
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+القيادة الحديثة
+</td>
+
+<td>
+15-09-2026
+</td>
+
+
+<td style="color:#e30613">
+قيد المراجعة
+</td>
+
+</tr>
+
+
+</table>
+
+
 </div>
 
 
-<p>
-تشهد منصة بحرة إلكتريك لتطوير الموظفين بإتمام البرنامج التدريبي بنجاح.
-</p>
-
-
 </div>
-
-
-
-</div>
-
-
-</div>
-
 
 </div>
 <script>
 
 /* =========================
-   Employee Database
+   Users Database
 ========================= */
 
 
-const EMPLOYEES = [
+const USERS = [
 
 {
 id:"1001",
-password:"123456",
+pin:"123456",
 name:"عبدالله الشريف",
 role:"Admin",
-department:"الموارد البشرية"
+department:"People Department"
 },
 
 
 {
 id:"2001",
-password:"123456",
+pin:"123456",
 name:"محمد العتيبي",
 role:"Employee",
-department:"الهندسة الكهربائية"
+department:"Electrical Engineering"
 },
 
 
 {
 id:"2002",
-password:"123456",
+pin:"123456",
 name:"سارة الغامدي",
 role:"Trainer",
-department:"التدريب والتطوير"
+department:"Training Department"
 }
 
 ];
@@ -915,28 +1084,28 @@ department:"التدريب والتطوير"
 
 
 
-
 /* =========================
- Login Function
+ LOGIN
 ========================= */
 
 
 function login(){
 
-let empId =
-document.getElementById("employeeId").value;
+
+let id =
+document.getElementById("employeeID").value;
 
 
-let password =
-document.getElementById("password").value;
+let pin =
+document.getElementById("pin").value;
 
 
 
 let user =
-EMPLOYEES.find(
-x =>
-x.id===empId &&
-x.password===password
+USERS.find(
+u =>
+u.id===id &&
+u.pin===pin
 );
 
 
@@ -950,7 +1119,22 @@ JSON.stringify(user)
 );
 
 
-showPlatform(user);
+
+document.getElementById(
+"loginPage"
+)
+.style.display="none";
+
+
+
+document.getElementById(
+"dashboard"
+)
+.style.display="block";
+
+
+
+loadUser(user);
 
 
 
@@ -960,129 +1144,110 @@ else{
 
 
 alert(
-"الرقم الوظيفي أو كلمة المرور غير صحيحة"
+"بيانات الدخول غير صحيحة"
 );
 
 
 }
 
 
+
 }
-
-
 
 
 
 
 /* =========================
- User Permissions
+ LOAD USER DATA
 ========================= */
 
 
-function permissions(role){
-
-
-if(role==="Admin"){
-
-return [
-
-"dashboard",
-"employees",
-"courses",
-"reports",
-"settings"
-
-];
-
-}
-
-
-
-if(role==="Trainer"){
-
-
-return [
-
-"dashboard",
-"courses",
-"attendance",
-"evaluation"
-
-];
-
-}
-
-
-
-return [
-
-"dashboard",
-"courses",
-"certificates"
-
-];
-
-
-}
-
-
-
-
-
-/* =========================
- Show Platform
-========================= */
-
-
-function showPlatform(user){
-
-
-document.querySelector(".login-page")
-?.classList.add("hidden");
-
-
-
-document.getElementById("app")
-.classList.remove("hidden");
-
+function loadUser(user){
 
 
 console.log(
-"Logged User:",
+"Current User",
 user
 );
 
 
 
+let menu =
+document.querySelectorAll(".menu div");
+
+
+
+if(user.role==="Employee"){
+
+
+menu[1].style.display="block";
+
+menu[2].style.display="block";
+
+menu[5].style.display="none";
+
+
+}
+
+
+
+if(user.role==="Trainer"){
+
+
+menu[2].style.display="block";
+
+menu[3].style.display="block";
+
+
+
+}
+
+
+
+if(user.role==="Admin"){
+
+
+menu.forEach(
+x=>x.style.display="block"
+);
+
+
+}
+
+
+
 }
 
 
 
 
+
 /* =========================
- Google Sheet Sync
+ Google Sheet Connection
 ========================= */
 
 
-const API_URL =
-"https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec";
+const GOOGLE_SCRIPT_URL =
+"PUT_YOUR_APPS_SCRIPT_URL_HERE";
 
 
 
-async function syncData(){
+
+async function getEmployees(){
 
 
 try{
 
 
 let response =
-await fetch(API_URL);
+await fetch(
+GOOGLE_SCRIPT_URL
+);
 
 
 
 let data =
 await response.json();
-
 
 
 console.log(
@@ -1095,15 +1260,14 @@ data
 return data;
 
 
-
 }
 
-catch(error){
+catch(e){
 
 
 console.log(
-"Sync Error",
-error
+"Connection Error",
+e
 );
 
 
@@ -1112,7 +1276,6 @@ error
 
 
 }
-
 
 
 
@@ -1123,30 +1286,45 @@ error
 ========================= */
 
 
-async function sendTrainingRequest(course){
+async function requestCourse(course){
+
 
 
 let user =
 JSON.parse(
-localStorage.getItem("bahraUser")
+localStorage.getItem(
+"bahraUser"
+)
 );
 
 
 
 let request={
 
-employee:user.name,
 
-course:course,
+employee:
+user.name,
 
-date:new Date()
+
+employeeId:
+user.id,
+
+
+course:
+course,
+
+
+date:
+new Date().toISOString()
+
 
 };
 
 
 
-await fetch(
-API_URL,
+
+fetch(
+GOOGLE_SCRIPT_URL,
 {
 
 method:"POST",
@@ -1157,6 +1335,7 @@ JSON.stringify(request)
 }
 
 );
+
 
 
 alert(
@@ -1173,40 +1352,55 @@ alert(
 
 
 /* =========================
- AI Assistant
+ AI ASSISTANT
 ========================= */
 
 
-async function askAI(question){
+async function askAI(message){
+
+
+
+let apiKey =
+"YOUR_GROQ_API_KEY";
 
 
 
 let response =
 await fetch(
+
 "https://api.groq.com/openai/v1/chat/completions",
+
 {
 
 
 method:"POST",
 
+
 headers:{
+
 
 "Content-Type":
 "application/json",
 
+
 "Authorization":
-"Bearer YOUR_GROQ_KEY"
+"Bearer "+apiKey
+
 
 },
 
 
+
 body:JSON.stringify({
+
 
 model:
 "llama-3.1-70b-versatile",
 
 
+
 messages:[
+
 
 {
 
@@ -1222,9 +1416,10 @@ content:
 
 role:"user",
 
-content:question
+content:message
 
 }
+
 
 ]
 
@@ -1233,6 +1428,7 @@ content:question
 
 
 }
+
 
 );
 
@@ -1256,11 +1452,11 @@ return result
 
 
 /* =========================
- Language Switch
+ LANGUAGE SWITCH
 ========================= */
 
 
-function changeLanguage(lang){
+function language(lang){
 
 
 if(lang==="en"){
@@ -1268,16 +1464,17 @@ if(lang==="en"){
 
 document.documentElement.lang="en";
 
+
 document.documentElement.dir="ltr";
 
 
 }
 
-
 else{
 
 
 document.documentElement.lang="ar";
+
 
 document.documentElement.dir="rtl";
 
@@ -1292,40 +1489,69 @@ document.documentElement.dir="rtl";
 
 
 /* =========================
- Load User
+ AUTO LOGIN
 ========================= */
 
 
 window.onload=function(){
 
 
-let saved =
+
+let user =
 localStorage.getItem(
 "bahraUser"
 );
 
 
 
-if(saved){
+if(user){
 
 
-showPlatform(
-JSON.parse(saved)
+document.getElementById(
+"loginPage"
+)
+.style.display="none";
+
+
+document.getElementById(
+"dashboard"
+)
+.style.display="block";
+
+
+
+loadUser(
+JSON.parse(user)
 );
 
 
 }
 
 
+}
 
-};
+
+
+
+
+/* =========================
+ LOGOUT
+========================= */
+
+
+function logout(){
+
+
+localStorage.removeItem(
+"bahraUser"
+);
+
+
+location.reload();
+
+
+}
 
 
 
 </script>
-
-
-
-</body>
-
-</html>
