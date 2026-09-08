@@ -1,16 +1,96 @@
-Bahra Electric Employee Development Platform — FINAL
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bahra Electric | منصة تطوير الموظفين</title>
+<meta name="theme-color" content="#07386c">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<style>
+:root{
+  --navy:#111820;--navy2:#081018;--teal:#e11b22;--teal2:#ff3037;
+  --brand1:var(--navy);--brand2:var(--teal);
+  --ink:#0c1b3a;--muted:#6b7a95;--bg:#f5f8fc;--line:#e5ebf3;--card:#fff;
+  --soft:#eefafa;--blueSoft:#eef5ff;--purpleSoft:#f6f1ff;--roseSoft:#fff0f3;
+  --ok:#188450;--okBg:#e9f8ef;--warn:#956716;--warnBg:#fff5da;--bad:#bd3448;--badBg:#fff0f2;--info:#2a6cb5;--infoBg:#edf5ff;
+  --shadow:0 12px 35px rgba(21,47,86,.08);--shadow2:0 8px 26px rgba(22,43,76,.05);
+  --radius:16px;--sidebar:264px
+}
+[data-theme="dark"]{
+  --ink:#e9eefb;--muted:#95a3bd;--bg:#0b1526;--line:#22304b;--card:#111d33;
+  --soft:#0f2740;--blueSoft:#12233d;--purpleSoft:#1b1836;--roseSoft:#2a1622;
+  --okBg:#12331f;--warnBg:#3a2c10;--badBg:#341620;--infoBg:#12233d;
+  --shadow:0 14px 40px rgba(0,0,0,.45);--shadow2:0 8px 26px rgba(0,0,0,.35)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Segoe UI",Tahoma,"Noto Sans Arabic",Arial,sans-serif;background:var(--bg);color:var(--ink);transition:background .25s,color .25s}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+.hidden{display:none!important}
+svg{display:block}
+a{text-decoration:none;color:var(--info)}
+::selection{background:rgba(12,167,165,.25)}
+:focus-visible{outline:2px solid var(--brand2);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 
-UPLOAD THESE TO GITHUB ROOT:
-index.html
-assets/   (the whole folder)
+/* ---------- Login ---------- */
+.login-page{min-height:100vh;display:grid;place-items:center;padding:26px;background:radial-gradient(circle at 12% 8%,rgba(12,167,165,.14),transparent 30%),linear-gradient(135deg,#f7fbfd,#eef6f6)}
+[data-theme="dark"] .login-page{background:radial-gradient(circle at 12% 8%,rgba(12,167,165,.14),transparent 30%),linear-gradient(135deg,#0a1424,#0b1a2e)}
+.login-shell{width:min(1140px,100%);display:grid;grid-template-columns:1fr 1.02fr;background:var(--card);border-radius:26px;overflow:hidden;box-shadow:0 30px 85px rgba(7,56,108,.16);border:1px solid var(--line)}
+.login-form{padding:56px 52px;display:flex;flex-direction:column;justify-content:center}
+.login-topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:26px}
+.login-topbar img{height:52px;width:auto}
+.login-form h1{font-size:29px;margin:0 0 6px;letter-spacing:-.5px}
+.login-form .sub{color:var(--muted);margin-bottom:26px;font-size:14px}
+.field{margin-bottom:15px}
+.field label{font-size:13px;font-weight:700;display:block;margin-bottom:7px}
+.field input,.field select,.field textarea{width:100%;border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--card);outline:none;transition:.16s}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--brand2);box-shadow:0 0 0 4px rgba(12,167,165,.12)}
+.pin-wrap{position:relative}
+.pin-toggle{position:absolute;inset-inline-end:10px;top:50%;transform:translateY(-50%);border:0;background:transparent;color:var(--muted);padding:4px;border-radius:8px}
+.primary-btn,.ghost-btn,.danger-btn{border:0;border-radius:12px;padding:12px 18px;font-weight:700;transition:.16s;font-size:14px}
+.primary-btn{background:linear-gradient(135deg,var(--brand2),var(--brand1));color:#fff;box-shadow:0 8px 22px rgba(12,167,165,.22)}
+.primary-btn:hover,.ghost-btn:hover{transform:translateY(-1px)}
+.primary-btn:active{transform:translateY(0)}
+.ghost-btn{background:var(--card);border:1px solid var(--line);color:var(--ink)}
+.danger-btn{background:var(--badBg);color:var(--bad);border:1px solid rgba(189,52,72,.25)}
+.login-art{background:linear-gradient(150deg,var(--brand1),var(--brand2));padding:50px;color:#fff;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.login-art:before,.login-art:after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.08)}
+.login-art:before{width:340px;height:340px;inset-inline-start:-140px;top:-130px}
+.login-art:after{width:250px;height:250px;inset-inline-end:-95px;bottom:-100px}
+.login-logo{width:150px;height:auto;background:#fff;border-radius:18px;padding:12px 16px;position:relative;z-index:1;box-shadow:0 18px 40px rgba(0,0,0,.18)}
+.login-art h2{font-size:26px;margin:22px 0 8px;position:relative;z-index:1}
+.login-art p{color:#e2fffb;max-width:430px;line-height:1.85;position:relative;z-index:1;font-size:14px}
+.login-features{display:grid;grid-template-columns:1fr 1fr;gap:11px;width:100%;max-width:420px;margin-top:24px;position:relative;z-index:1}
+.login-features div{background:rgba(255,255,255,.11);border:1px solid rgba(255,255,255,.14);padding:12px;border-radius:12px;font-size:13px;display:flex;align-items:center;gap:8px}
+.login-features div svg{width:18px;height:18px;stroke:#d7fffb;fill:none;stroke-width:1.9;flex:none}
+.err{background:var(--badBg);color:var(--bad);border:1px solid rgba(189,52,72,.28);padding:11px 12px;border-radius:12px;margin-top:12px;font-size:13px}
+.hint-box{background:var(--soft);border:1px dashed var(--brand2);border-radius:12px;padding:11px 13px;margin-top:16px;font-size:12px;color:var(--muted)}
+.hint-box b{color:var(--ink)}
 
-Optional backend:
-Code.gs
+/* ---------- App layout ---------- */
+.app{min-height:100vh;display:flex}
+.sidebar{width:var(--sidebar);position:fixed;inset-inline-start:0;top:0;bottom:0;background:linear-gradient(180deg,var(--navy),var(--navy2));color:#fff;padding:16px 12px;display:flex;flex-direction:column;z-index:40}
+.side-head{display:flex;align-items:center;gap:11px;padding:6px 8px 15px;border-bottom:1px solid rgba(255,255,255,.09);margin-bottom:8px}
+.side-head img{width:52px;height:auto;background:#fff;border-radius:12px;padding:5px}
+.side-head b{font-size:15px;display:block}
+.side-head small{display:block;color:#8fd6d9;margin-top:3px;font-size:10px}
+.nav{display:flex;flex-direction:column;gap:3px;padding-top:8px;overflow:auto;flex:1}
+.nav::-webkit-scrollbar{width:0}
+.nav button{border:0;background:transparent;color:#dbe7f7;display:flex;align-items:center;gap:12px;padding:11px 13px;border-radius:11px;font-size:13.5px;position:relative;font-weight:600}
+.nav button svg{width:19px;height:19px;stroke:currentColor;stroke-width:1.9;fill:none;flex:none}
+.nav button:hover{background:rgba(255,255,255,.09);color:#fff}
+.nav button.active{background:linear-gradient(135deg,var(--teal),#0c8f9a);box-shadow:0 8px 18px rgba(0,0,0,.16);color:#fff}
+.nav .nav-badge{margin-inline-start:auto;background:#fff;color:var(--navy);min-width:19px;height:19px;padding:0 5px;border-radius:10px;font-size:10px;font-weight:800;display:grid;place-items:center}
+.side-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:11px}
+.logout-btn{width:100%;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.04);color:#fff;border-radius:11px;padding:11px 12px;display:flex;align-items:center;justify-content:center;gap:8px;font-weight:600;font-size:13px}
+.logout-btn:hover{background:rgba(255,255,255,.1)}
+.logout-btn svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.9}
 
-Demo:
-Admin    BE-1001 / 1234
-Trainer  BE-1002 / 1234
-Employee BE-1003 / 1234
-
-IMPORTANT:
-Keep the assets folder next to index.html. Do not move its images outside the folder.
+.workspace{margin-inline-start:var(--sidebar);width:calc(100% - var(--sidebar));min-height:100vh;display:flex;flex-direction:column}
+.topbar{min-height:74px;background:var(--card);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:12px 26px;position:sticky;top:0;z-index:30;gap:12px}
+.top-brand{display:flex;align-items:center;gap:12px}
+.top-brand img{height:46px;width:auto}
+.top-brand .tt b{font-size:15px;display:block}
+.top-brand .tt small{font-size:10.5px;color:var(--teal)}
