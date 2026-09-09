@@ -1,9 +1,159 @@
-<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Bahra Electric Training Platform</title><link rel="stylesheet" href="style.css"></head><body>
-<section id="loginPage" class="login-page"><div class="login-card"><div class="brand">BAHRA ELECTRIC</div><h2>منصة التدريب والتطوير</h2><input id="employeeID" placeholder="الرقم الوظيفي"><input id="pin" type="password" placeholder="PIN"><button onclick="login()">تسجيل الدخول</button><p style="margin-top:16px;color:#666">تجربة الإدارة: ADMIN001 / 1234</p></div></section>
-<div id="app" class="shell hidden"><aside class="sidebar"><div class="logo">BAHRA ELECTRIC</div><button onclick="showTab('homeTab')">الرئيسية</button><button onclick="showTab('coursesTab')">الدورات</button><button onclick="showTab('myCoursesTab')">دوراتي</button><button onclick="showTab('requestsTab')">طلباتي</button><button onclick="showTab('certificatesTab')">الشهادات</button><button onclick="logout()">تسجيل الخروج</button></aside><main class="main"><div class="topbar"><h2>منصة التدريب والتطوير</h2><div class="userbox"><strong id="userName"></strong><br><small id="userRole"></small></div></div>
-<section id="homeTab" class="tab-section"><div class="hero"><h2>تطوير مستمر. أداء أفضل.</h2><p>Bahra Electric Employee Development Platform</p></div><div class="kpis"><div class="kpi"><span>الموظفون</span><strong id="kpiEmployees">0</strong></div><div class="kpi"><span>الدورات</span><strong id="kpiCourses">0</strong></div><div class="kpi"><span>طلباتي</span><strong id="kpiRequests">0</strong></div><div class="kpi"><span>الشهادات</span><strong id="kpiCertificates">0</strong></div></div><div class="section"><h3>الدورات المتاحة</h3><div id="courseList" class="grid"></div></div></section>
-<section id="coursesTab" class="tab-section hidden"><div class="section"><h3>الدورات</h3><p>جميع الدورات متاحة من الصفحة الرئيسية.</p></div></section>
-<section id="myCoursesTab" class="tab-section hidden"><div class="section"><h3>دوراتي</h3><div id="myCourseList" class="grid"></div></div><div id="coursePlayer" class="section hidden"><div style="display:flex;justify-content:space-between;align-items:center"><h3 id="playerTitle">الدورة</h3><strong id="playerProgress">0%</strong></div><div id="moduleList"></div><button onclick="startExam()">بدء الاختبار النهائي</button><div id="examBox" class="hidden"><h3>الاختبار النهائي</h3><div id="examQuestions"></div><button onclick="submitExam()">تسليم الاختبار</button><div id="examResult"></div></div></div></section>
-<section id="requestsTab" class="tab-section hidden"><div class="section"><h3>طلباتي التدريبية</h3><div id="requestList"></div></div></section>
-<section id="certificatesTab" class="tab-section hidden"><div class="section"><h3>الشهادات</h3><p>سيتم عرض شهاداتك هنا بعد اجتياز الاختبارات.</p></div></section>
-</main></div><script src="script.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <base target="_top">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bahra Electric Training Platform</title>
+  <?!= include('CSS'); ?>
+</head>
+<body>
+
+<section id="loginPage" class="login-page">
+  <div class="login-overlay"></div>
+  <div class="login-card">
+    <div class="brand-block">
+      <div class="brand-main">BAHRA</div>
+      <div class="brand-sub">ELECTRIC</div>
+    </div>
+
+    <h1>منصة التدريب والتطوير</h1>
+    <p class="subtitle">Employee Learning & Development Platform</p>
+
+    <label>الرقم الوظيفي</label>
+    <input id="employeeID" value="ADMIN001" placeholder="Employee ID">
+
+    <label>PIN</label>
+    <input id="pin" type="password" value="1234" placeholder="PIN">
+
+    <button class="primary" onclick="login()">تسجيل الدخول</button>
+    <div id="loginMsg" class="msg"></div>
+  </div>
+</section>
+
+<div id="app" class="app hidden">
+  <aside class="sidebar">
+    <div class="logo-wrap">
+      <div class="logo-bahra">BAHRA</div>
+      <div class="logo-electric">ELECTRIC</div>
+    </div>
+
+    <nav>
+      <button class="nav-btn active" onclick="showTab('homeTab', this)">الرئيسية</button>
+      <button class="nav-btn" onclick="showTab('coursesTab', this)">الدورات</button>
+      <button class="nav-btn" onclick="showTab('myCoursesTab', this)">دوراتي</button>
+      <button class="nav-btn" onclick="showTab('requestsTab', this)">طلباتي</button>
+      <button class="nav-btn" onclick="showTab('certificatesTab', this); loadCertificates()">الشهادات</button>
+      <button class="nav-btn" onclick="showTab('notificationsTab', this); loadNotifications()">الإشعارات</button>
+    </nav>
+
+    <button class="logout" onclick="logout()">تسجيل الخروج</button>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div>
+        <h2>منصة التدريب والتطوير</h2>
+        <span>Bahra Electric</span>
+      </div>
+      <div class="userbox">
+        <strong id="userName"></strong>
+        <small id="userRole"></small>
+      </div>
+    </header>
+
+    <section id="homeTab" class="tab-section">
+      <div class="hero">
+        <div>
+          <span class="hero-badge">Bahra Electric Academy</span>
+          <h1>نطوّر المعرفة لنصنع أداءً أقوى</h1>
+          <p>رحلة تدريبية متكاملة للموظفين من طلب الدورة حتى الاختبار والشهادة.</p>
+        </div>
+      </div>
+
+      <div class="kpis">
+        <div class="kpi"><span>الموظفون</span><strong id="kpiEmployees">0</strong></div>
+        <div class="kpi"><span>الدورات</span><strong id="kpiCourses">0</strong></div>
+        <div class="kpi"><span>طلباتي</span><strong id="kpiRequests">0</strong></div>
+        <div class="kpi"><span>الشهادات</span><strong id="kpiCertificates">0</strong></div>
+      </div>
+
+      <div class="section">
+        <div class="section-head">
+          <h3>الدورات المقترحة</h3>
+          <button class="ghost" onclick="showTab('coursesTab')">عرض الكل</button>
+        </div>
+        <div id="homeCourseList" class="grid"></div>
+      </div>
+    </section>
+
+    <section id="coursesTab" class="tab-section hidden">
+      <div class="section">
+        <div class="section-head">
+          <h3>جميع الدورات</h3>
+          <input id="courseSearch" class="search" placeholder="ابحث عن دورة..." oninput="filterCourses()">
+        </div>
+        <div id="courseList" class="grid"></div>
+      </div>
+    </section>
+
+    <section id="myCoursesTab" class="tab-section hidden">
+      <div class="section">
+        <h3>دوراتي</h3>
+        <div id="myCourseList" class="grid"></div>
+      </div>
+
+      <div id="coursePlayer" class="section hidden">
+        <div class="section-head">
+          <div>
+            <h3 id="playerTitle">الدورة</h3>
+            <span id="playerProgress">0%</span>
+          </div>
+          <button class="ghost" onclick="document.getElementById('coursePlayer').classList.add('hidden')">إغلاق</button>
+        </div>
+
+        <div id="moduleList"></div>
+
+        <div class="exam-actions">
+          <button class="primary" onclick="startExam()">بدء الاختبار النهائي</button>
+        </div>
+
+        <div id="examBox" class="hidden">
+          <h3>الاختبار النهائي</h3>
+          <div id="examQuestions"></div>
+          <button class="primary" onclick="submitExamNow()">تسليم الاختبار</button>
+          <div id="examResult"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="requestsTab" class="tab-section hidden">
+      <div class="section">
+        <h3>طلباتي التدريبية</h3>
+        <div id="requestList"></div>
+      </div>
+    </section>
+
+    <section id="certificatesTab" class="tab-section hidden">
+      <div class="section">
+        <h3>الشهادات</h3>
+        <div id="certificateList"></div>
+      </div>
+    </section>
+
+    <section id="notificationsTab" class="tab-section hidden">
+      <div class="section">
+        <h3>الإشعارات</h3>
+        <div id="notificationList"></div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div id="loader" class="loader hidden">
+  <div class="spinner"></div>
+</div>
+
+<?!= include('JavaScript'); ?>
+</body>
+</html>
