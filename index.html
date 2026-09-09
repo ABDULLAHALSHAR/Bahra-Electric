@@ -5,7 +5,285 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bahra Electric Training Platform</title>
-  <?!= include('CSS'); ?>
+  <style>
+*{box-sizing:border-box}
+:root{
+  --red:#a80000;
+  --red2:#d10a0a;
+  --black:#121212;
+  --soft:#f5f6f8;
+  --line:#e6e8ec;
+  --text:#191919;
+  --muted:#6b7280;
+}
+body{
+  margin:0;
+  font-family:Arial,"Segoe UI",Tahoma,sans-serif;
+  background:var(--soft);
+  color:var(--text);
+}
+.hidden{display:none!important}
+button,input{font:inherit}
+button{cursor:pointer}
+.login-page{
+  min-height:100vh;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255,255,255,.07), transparent 28%),
+    linear-gradient(120deg,#070707 0%,#1b1b1b 52%,#7d0000 100%);
+  overflow:hidden;
+}
+.login-page:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(135deg, transparent 0 55%, rgba(255,255,255,.04) 55% 58%, transparent 58% 100%),
+    repeating-linear-gradient(90deg, transparent 0 70px, rgba(255,255,255,.025) 70px 72px);
+}
+.login-card{
+  position:relative;
+  z-index:2;
+  width:min(440px,94vw);
+  background:rgba(255,255,255,.97);
+  border-radius:24px;
+  padding:38px;
+  box-shadow:0 24px 70px rgba(0,0,0,.35);
+}
+.brand-block{margin-bottom:22px}
+.brand-main{font-size:34px;font-weight:900;letter-spacing:1px;color:var(--red)}
+.brand-sub{font-size:14px;font-weight:800;letter-spacing:5px;color:#222}
+.login-card h1{margin:0 0 6px;font-size:28px}
+.subtitle{margin:0 0 24px;color:var(--muted)}
+.login-card label{display:block;font-weight:700;margin:12px 0 7px}
+.login-card input{
+  width:100%;
+  border:1px solid #d9dde3;
+  border-radius:12px;
+  padding:14px;
+  outline:none;
+  background:#fff;
+}
+.login-card input:focus{border-color:var(--red)}
+.primary{
+  border:0;
+  background:linear-gradient(135deg,var(--red),var(--red2));
+  color:#fff;
+  border-radius:12px;
+  padding:12px 18px;
+  font-weight:800;
+}
+.login-card .primary{width:100%;margin-top:18px}
+.msg{min-height:20px;margin-top:12px;color:var(--red);font-size:14px}
+
+.app{
+  display:grid;
+  grid-template-columns:260px 1fr;
+  min-height:100vh;
+}
+.sidebar{
+  background:#101010;
+  color:#fff;
+  padding:24px 16px;
+  display:flex;
+  flex-direction:column;
+  min-height:100vh;
+}
+.logo-wrap{padding:8px 10px 24px;border-bottom:1px solid #2a2a2a;margin-bottom:18px}
+.logo-bahra{font-size:27px;font-weight:900;color:#fff}
+.logo-electric{font-size:12px;letter-spacing:5px;color:#bbb}
+nav{display:flex;flex-direction:column;gap:7px}
+.nav-btn,.logout{
+  border:0;
+  background:transparent;
+  color:#ddd;
+  text-align:right;
+  padding:12px 14px;
+  border-radius:10px;
+}
+.nav-btn:hover,.nav-btn.active{background:#202020;color:#fff}
+.logout{margin-top:auto;background:#1b1b1b;color:#fff}
+.main{padding:24px}
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
+}
+.topbar h2{margin:0 0 4px}
+.topbar span{color:var(--muted);font-size:13px}
+.userbox{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:10px 14px;
+  min-width:190px;
+}
+.userbox strong{display:block}
+.userbox small{color:var(--muted)}
+.hero{
+  min-height:280px;
+  border-radius:22px;
+  padding:34px;
+  color:#fff;
+  display:flex;
+  align-items:flex-end;
+  background:
+    linear-gradient(90deg,rgba(0,0,0,.82),rgba(130,0,0,.68)),
+    radial-gradient(circle at 85% 20%,rgba(255,255,255,.15),transparent 22%),
+    linear-gradient(135deg,#222,#4c0000);
+  box-shadow:0 12px 30px rgba(0,0,0,.12);
+}
+.hero-badge{
+  display:inline-block;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.2);
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:12px;
+}
+.hero h1{font-size:38px;max-width:700px;margin:12px 0 8px}
+.hero p{margin:0;color:#eee;max-width:700px;line-height:1.8}
+.kpis{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+  margin:18px 0;
+}
+.kpi{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:18px;
+}
+.kpi span{color:var(--muted)}
+.kpi strong{display:block;font-size:32px;margin-top:8px;color:var(--red)}
+.section{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:20px;
+  margin-bottom:18px;
+}
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin-bottom:14px;
+}
+.section h3{margin:0 0 14px}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+.course-card{
+  border:1px solid var(--line);
+  border-radius:15px;
+  padding:16px;
+  background:#fff;
+  display:flex;
+  flex-direction:column;
+  min-height:210px;
+}
+.course-card h3{margin:12px 0 8px}
+.course-card p{color:var(--muted);line-height:1.6;flex:1}
+.tag{
+  align-self:flex-start;
+  background:#fff0f0;
+  color:var(--red);
+  border-radius:999px;
+  padding:5px 9px;
+  font-size:12px;
+}
+.meta{color:var(--muted);font-size:13px;margin:8px 0 14px}
+.ghost{
+  border:1px solid var(--line);
+  background:#fff;
+  color:#222;
+  border-radius:10px;
+  padding:10px 14px;
+}
+.search{
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:10px 12px;
+  min-width:240px;
+}
+.row-card,.module-card,.certificate-card,.notification-card{
+  border:1px solid var(--line);
+  border-radius:13px;
+  padding:14px;
+  margin-bottom:10px;
+  background:#fff;
+}
+.row-card,.module-card{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+}
+.progress{
+  height:8px;
+  background:#eee;
+  border-radius:999px;
+  overflow:hidden;
+  margin:10px 0 14px;
+}
+.progress span{display:block;height:100%;background:var(--red)}
+.question-card{
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:16px;
+  margin:12px 0;
+}
+.question-card label{display:block;padding:7px 0}
+.success-box,.danger-box{
+  padding:16px;
+  border-radius:12px;
+  margin-top:14px;
+}
+.success-box{background:#ecfdf3}
+.danger-box{background:#fff1f2}
+.empty{padding:24px;text-align:center;color:var(--muted)}
+.loader{
+  position:fixed;
+  inset:0;
+  background:rgba(255,255,255,.55);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+}
+.spinner{
+  width:42px;
+  height:42px;
+  border:4px solid #ddd;
+  border-top-color:var(--red);
+  border-radius:50%;
+  animation:spin .8s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+@media(max-width:960px){
+  .app{grid-template-columns:1fr}
+  .sidebar{min-height:auto}
+  .kpis,.grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:620px){
+  .main{padding:14px}
+  .topbar{align-items:flex-start;gap:10px}
+  .kpis,.grid{grid-template-columns:1fr}
+  .hero h1{font-size:28px}
+  .search{min-width:0;width:100%}
+  .section-head{align-items:flex-start;flex-direction:column}
+}
+</style>
 </head>
 <body>
 
@@ -154,6 +432,295 @@
   <div class="spinner"></div>
 </div>
 
-<?!= include('JavaScript'); ?>
+<script>
+let currentUser = null;
+let currentCourse = null;
+let allCourses = [];
+let examAnswers = {};
+
+function showLoader(show=true){
+  document.getElementById("loader").classList.toggle("hidden", !show);
+}
+
+function gas(fn, ...args){
+  return new Promise((resolve,reject)=>{
+    showLoader(true);
+    google.script.run
+      .withSuccessHandler(result=>{showLoader(false); resolve(result);})
+      .withFailureHandler(err=>{showLoader(false); reject(new Error(err.message || err));})
+      [fn](...args);
+  });
+}
+
+async function login(){
+  const employeeID = document.getElementById("employeeID").value.trim();
+  const pin = document.getElementById("pin").value.trim();
+  const msg = document.getElementById("loginMsg");
+  msg.textContent = "";
+
+  if(!employeeID || !pin){
+    msg.textContent = "أدخل الرقم الوظيفي وPIN";
+    return;
+  }
+
+  try{
+    currentUser = await gas("login", employeeID, pin);
+    sessionStorage.setItem("bahraUser", JSON.stringify(currentUser));
+
+    document.getElementById("loginPage").classList.add("hidden");
+    document.getElementById("app").classList.remove("hidden");
+    document.getElementById("userName").textContent = currentUser.name || "";
+    document.getElementById("userRole").textContent = currentUser.role || "";
+
+    await refreshAll();
+  }catch(err){
+    msg.textContent = err.message;
+  }
+}
+
+function logout(){
+  sessionStorage.removeItem("bahraUser");
+  location.reload();
+}
+
+async function refreshAll(){
+  await Promise.all([
+    loadDashboard(),
+    loadCourses(),
+    loadMyRequests(),
+    loadMyCourses()
+  ]);
+}
+
+async function loadDashboard(){
+  const d = await gas("getDashboard", currentUser.employeeID);
+  document.getElementById("kpiEmployees").textContent = d.employees;
+  document.getElementById("kpiCourses").textContent = d.courses;
+  document.getElementById("kpiRequests").textContent = d.requests;
+  document.getElementById("kpiCertificates").textContent = d.certificates;
+}
+
+async function loadCourses(){
+  allCourses = await gas("getCourses");
+  renderCourses(allCourses);
+  document.getElementById("homeCourseList").innerHTML = allCourses.slice(0,6).map(courseCard).join("");
+}
+
+function renderCourses(list){
+  document.getElementById("courseList").innerHTML =
+    list.length ? list.map(courseCard).join("") : '<div class="empty">لا توجد دورات</div>';
+}
+
+function courseCard(c){
+  return `
+    <div class="course-card">
+      <span class="tag">${esc(c.category || "Course")}</span>
+      <h3>${esc(c.name || "")}</h3>
+      <p>${esc(c.objective || "")}</p>
+      <div class="meta">${esc(c.hours || "")} ساعة · ${esc(c.level || "")}</div>
+      <button class="primary" onclick="requestCourse('${esc(c.id)}')">طلب الدورة</button>
+    </div>
+  `;
+}
+
+function filterCourses(){
+  const q = document.getElementById("courseSearch").value.trim().toLowerCase();
+  const list = allCourses.filter(c =>
+    String(c.name || "").toLowerCase().includes(q) ||
+    String(c.category || "").toLowerCase().includes(q)
+  );
+  renderCourses(list);
+}
+
+async function requestCourse(courseID){
+  try{
+    const d = await gas("submitTrainingRequest", currentUser.employeeID, courseID);
+    alert(d.message);
+    await loadMyRequests();
+    await loadDashboard();
+  }catch(err){
+    alert(err.message);
+  }
+}
+
+async function loadMyRequests(){
+  const list = await gas("getMyRequests", currentUser.employeeID);
+  const box = document.getElementById("requestList");
+  box.innerHTML = list.length ? list.map(r=>`
+    <div class="row-card">
+      <div>
+        <strong>${esc(r.courseName)}</strong>
+        <div class="meta">${esc(r.date || "")}</div>
+      </div>
+      <span>${esc(r.status || "")}</span>
+    </div>
+  `).join("") : '<div class="empty">لا توجد طلبات</div>';
+}
+
+async function loadMyCourses(){
+  const list = await gas("getMyCourses", currentUser.employeeID);
+  const box = document.getElementById("myCourseList");
+  box.innerHTML = list.length ? list.map(c=>`
+    <div class="course-card">
+      <h3>${esc(c.courseName)}</h3>
+      <div class="meta">${esc(c.status || "")} · ${Number(c.progress || 0)}%</div>
+      <div class="progress"><span style="width:${Number(c.progress || 0)}%"></span></div>
+      <button class="primary" onclick="openCourse('${esc(c.courseID)}')">فتح الدورة</button>
+    </div>
+  `).join("") : '<div class="empty">لا توجد دورات مسجلة</div>';
+}
+
+async function openCourse(courseID){
+  try{
+    currentCourse = await gas("getCourseDetails", courseID);
+    document.getElementById("playerTitle").textContent = currentCourse.name;
+    document.getElementById("moduleList").innerHTML = currentCourse.modules.length ?
+      currentCourse.modules.map(m=>`
+        <div class="module-card">
+          <div>
+            <strong>${esc(m.title || "")}</strong>
+            <p>${esc(m.description || "")}</p>
+          </div>
+          <button class="primary" onclick="completeOneModule('${esc(m.id)}')">إكمال</button>
+        </div>
+      `).join("") : '<div class="empty">لا يوجد محتوى للدورة</div>';
+
+    document.getElementById("coursePlayer").classList.remove("hidden");
+    showTab("myCoursesTab");
+  }catch(err){
+    alert(err.message);
+  }
+}
+
+async function completeOneModule(moduleID){
+  try{
+    const progress = await gas(
+      "completeModule",
+      currentUser.employeeID,
+      currentCourse.id,
+      moduleID
+    );
+    document.getElementById("playerProgress").textContent = progress + "%";
+    await loadMyCourses();
+  }catch(err){
+    alert(err.message);
+  }
+}
+
+async function startExam(){
+  try{
+    if(!currentCourse) return alert("افتح الدورة أولاً");
+
+    const d = await gas("getExam", currentUser.employeeID, currentCourse.id);
+    examAnswers = {};
+
+    document.getElementById("examQuestions").innerHTML = d.questions.map((q,i)=>`
+      <div class="question-card">
+        <h4>${i+1}. ${esc(q.question)}</h4>
+        ${q.options.map(o=>`
+          <label>
+            <input type="radio" name="q_${esc(q.id)}"
+              onchange="examAnswers['${esc(q.id)}']='${esc(o.key)}'">
+            ${esc(o.text)}
+          </label>
+        `).join("")}
+      </div>
+    `).join("");
+
+    document.getElementById("examBox").classList.remove("hidden");
+  }catch(err){
+    alert(err.message);
+  }
+}
+
+async function submitExamNow(){
+  try{
+    const d = await gas(
+      "submitExam",
+      currentUser.employeeID,
+      currentCourse.id,
+      examAnswers
+    );
+
+    document.getElementById("examResult").innerHTML = `
+      <div class="${d.result === "Pass" ? "success-box" : "danger-box"}">
+        <strong>${d.result === "Pass" ? "ناجح" : "لم تحقق درجة النجاح"}</strong>
+        <div>الدرجة: ${d.score}%</div>
+        ${d.certificateID ? `<div>رقم الشهادة: ${esc(d.certificateID)}</div>` : ""}
+      </div>
+    `;
+
+    await loadDashboard();
+  }catch(err){
+    alert(err.message);
+  }
+}
+
+async function loadCertificates(){
+  try{
+    const list = await gas("getCertificates", currentUser.employeeID);
+    const box = document.getElementById("certificateList");
+    box.innerHTML = list.length ? list.map(c=>`
+      <div class="certificate-card">
+        <strong>${esc(c.courseName)}</strong>
+        <div class="meta">الدرجة: ${esc(c.score)}% · ${esc(c.date || "")}</div>
+        <div>${esc(c.id)}</div>
+      </div>
+    `).join("") : '<div class="empty">لا توجد شهادات</div>';
+  }catch(err){
+    alert(err.message);
+  }
+}
+
+async function loadNotifications(){
+  try{
+    const list = await gas("getNotifications", currentUser.employeeID);
+    const box = document.getElementById("notificationList");
+    box.innerHTML = list.length ? list.map(n=>`
+      <div class="notification-card">
+        <strong>${esc(n.title)}</strong>
+        <p>${esc(n.message || "")}</p>
+        <div class="meta">${esc(n.date || "")}</div>
+      </div>
+    `).join("") : '<div class="empty">لا توجد إشعارات</div>';
+  }catch(err){
+    alert(err.message);
+  }
+}
+
+function showTab(id, btn=null){
+  document.querySelectorAll(".tab-section").forEach(s=>s.classList.add("hidden"));
+  const el = document.getElementById(id);
+  if(el) el.classList.remove("hidden");
+
+  document.querySelectorAll(".nav-btn").forEach(b=>b.classList.remove("active"));
+  if(btn) btn.classList.add("active");
+}
+
+function esc(v){
+  return String(v ?? "")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
+
+document.addEventListener("DOMContentLoaded", async()=>{
+  const saved = sessionStorage.getItem("bahraUser");
+  if(saved){
+    try{
+      currentUser = JSON.parse(saved);
+      document.getElementById("loginPage").classList.add("hidden");
+      document.getElementById("app").classList.remove("hidden");
+      document.getElementById("userName").textContent = currentUser.name || "";
+      document.getElementById("userRole").textContent = currentUser.role || "";
+      await refreshAll();
+    }catch(e){
+      sessionStorage.removeItem("bahraUser");
+    }
+  }
+});
+</script>
 </body>
 </html>
